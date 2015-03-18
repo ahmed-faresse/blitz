@@ -5,14 +5,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<link href="<?php echo css_url("bootstrap")?>" rel="stylesheet" type="text/css" />
 	<link href="<?php echo css_url("pe-icon-7-stroke")?>" rel="stylesheet" type="text/css" />
-	<link href="<?php echo css_url("ct-navbar")?>" rel="stylesheet" type="text/css" />  
-    <!--     Font Awesome     -->
+	<link href="<?php echo css_url("ct-navbar")?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo css_url("home")?>" rel="stylesheet" type="text/css" />  
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
-    <script src="<?php echo css_url("jquery-1.10.2")?>" type="text/javascript"></script>
-	<script src="<?php echo css_url("bootstrap")?>" type="text/javascript"></script>	
-	<script src="<?php echo css_url("ct-navbar")?>" type="text/javascript"></script>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js" defer></script>
+    <script src="<?php echo js_url("jquery-1.10.2")?>" type="text/javascript" defer></script>
+	<script src="<?php echo js_url("bootstrap")?>" type="text/javascript" defer></script>	
+	<script src="<?php echo js_url("ct-navbar")?>" type="text/javascript" defer></script>
     <style>
         .fa-heart{
             color: #F74933;
@@ -112,27 +112,27 @@
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
         </nav>
-       <div class="blurred-container">
-            <div class="img-src" style="background-image: url('images/bg.jpg')"></div>
-        </div>
     </div><!--  end navbar -->
 
+<div class="blurred-container">
+            <div class="img-src" style="background-image: url('<?php echo img_url('bg.jpg')?>')"></div>
+        </div>
  <div class="main">
         <div class="container tim-container" style="max-width:1400px; padding-top:100px">
         <div class="col-lg-4">
-          <a href="catalog.php#Stringed" class="circle_area"><img class="img-circle center-block vignette" src="images/lol.jpg" alt="Sringed"></a>
+          <a href="catalog.php#Stringed" class="circle_area"><?php echo img("lol.jpg", "img-circle center-block", "League of Legends image")?></a>
           <h2>Sringed Instruments</h2>
           <p class="justify" >Always wanted to play guitar? Interested in playing violin? Here is the catalog of the stringed instruments</p>
           <p><a class="btn btn-default" href="catalog.php#Stringed" role="button">View catalog &raquo;</a></p>
         </div>
         <div class="col-lg-4">
-          <a href="catalog.php#Percussion" class="circle_area"><img class="img-circle center-block vignette" src="images/fifa.jpg" alt="Percussion"></a>
+          <a href="catalog.php#Percussion" class="circle_area"><?php echo img("fifa.jpg", "img-circle center-block", "Fifa image")?></a>
           <h2>Percussion Instruments</h2>
           <p class="justify">Enjoy a wide choice of percussion instruments. You will be able to perform your best drum moves for some occasions without buying one</p>
           <p><a class="btn btn-default" href="catalog.php#Percussion" role="button">View catalog &raquo;</a></p>
         </div>
         <div class="col-lg-4">
-          <a href="catalog.php#Wind" class="circle_area"><img class="img-circle center-block vignette" src="images/sc2.jpg" alt="Percussion"></a>
+          <a href="catalog.php#Wind" class="circle_area"><?php echo img("sc2.jpg", "img-circle center-block", "Starcraft 2 image")?></a>
           <h2>Wind Instruments</h2>
           <p class="justify">Our wind instruments are waiting for you, even if your have not a strong breath. Just try it and you will maybe find a new passion</p>
           <p><a class="btn btn-default" href="catalog.php#Wind" role="button">View catalog &raquo;</a></p>

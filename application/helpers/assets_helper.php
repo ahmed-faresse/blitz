@@ -20,8 +20,8 @@ if (!function_exists('img_url')){
 }
 
 if (!function_exists('img')){
-	function img($nom,$alt=''){
-		return '<img src="' . img_url($nom) . '"alt="' . $alt .  '"/>';
+	function img($nom, $class='', $alt=''){
+		return '<img src="' . img_url($nom) . '" class="' . $class . '" "alt="' . $alt .  '"/>';
 	}
 }
 ?>

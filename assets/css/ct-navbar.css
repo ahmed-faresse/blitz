@@ -478,6 +478,7 @@ h1 .subtitle{
     background-repeat:no-repeat;
     background-size:cover;
     background-position: center center;
+    background-image: url('assets/images/bg.jpg')
 }
 .blur{
   opacity:0;

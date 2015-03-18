@@ -1,0 +1,7 @@
+.circle_area
+{
+    display: block;
+    width: 300px;
+    height: 300px;
+    border-radius: 25px;
+}
