@@ -93,7 +93,7 @@
     </div><!--  end navbar -->
 
 <div class="blurred-container">
-            <div class="img-src" style="background-image: url('<?php echo img_url('bg.jpg')?>')"></div>
+            <div class="img-src" style="background-image: url('<?php echo img_url('bg.png')?>')"></div>
 </div>
  <div class="main">
         <div class="container tim-container main-container">
