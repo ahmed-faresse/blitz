@@ -47,7 +47,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
                     <li>
-                      <a href="<?php echo site_url() . '/events' ?>">
+                      <a href="<?php echo site_url() . 'events' ?>">
                         <i class="pe-7s-note2"></i>
                         <p>Events</p>
                       </a>
@@ -61,19 +61,36 @@
                         </a>
                     </li> 
                     <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="pe-7s-user"></i>
-                                <p>Account</p>
-                            </a>
-                          <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                          </ul>
+                          <?php if(isset($_SESSION['logged_in']))
+                          {
+                            echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                  <i class="pe-7s-user"></i>
+                                  <p>Account</p>
+                              </a>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">Action</a></li>
+                              <li><a href="#">Another action</a></li>
+                              <li><a href="#">Something</a></li>
+                              <li><a href="#">Another action</a></li>
+                              <li><a href="#">Something</a></li>
+                              <li class="divider"></li>
+                              <li><a href="#">Separated link</a></li>
+                            </ul></li>
+                            <li>
+                            <a href="events/logout">
+                              <i class="pe-7s-note2"></i>
+                              <p>Log out</p>
+                            </a>';
+                          }
+                          else
+                          {
+                            echo '<a href="'. site_url() . 'login">
+                              <i class="pe-7s-note2"></i>
+                              <p>Log in</p>
+                            </a>';
+                          }
+                          ?>
+
                     </li>
                </ul>
             </div><!-- /.navbar-collapse -->

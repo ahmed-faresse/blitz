@@ -46,7 +46,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
                     <li>
-                      <a href="<?php echo site_url() . '/events' ?>">
+                      <a href="<?php echo site_url() . 'events' ?>">
                         <i class="pe-7s-note2"></i>
                         <p>Events</p>
                       </a>
@@ -83,7 +83,7 @@
                           }
                           else
                           {
-                            echo '<a href="'. site_url() . '/events">
+                            echo '<a href="'. site_url() . 'login">
                               <i class="pe-7s-note2"></i>
                               <p>Log in</p>
                             </a>';
