@@ -60,7 +60,7 @@
                         </a>
                     </li> 
                     <li class="dropdown">
-                          <?php if(!isset($_SESSION['logged_in']))
+                          <?php if(isset($_SESSION['logged_in']))
                           {
                             echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                   <i class="pe-7s-user"></i>
@@ -74,7 +74,12 @@
                               <li><a href="#">Something</a></li>
                               <li class="divider"></li>
                               <li><a href="#">Separated link</a></li>
-                            </ul>';
+                            </ul></li>
+                            <li>
+                            <a href="home/logout">
+                              <i class="pe-7s-note2"></i>
+                              <p>Log out</p>
+                            </a>';
                           }
                           else
                           {
