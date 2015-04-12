@@ -103,21 +103,24 @@
           $arr = array(1, 2, 3, 4, 5);
           $name = array("event1", "event2", "event3", "event4", "event5");
           $desc = array("This is the description of event1", "This is the description of event2", "This is the description of event3", "This is the description of event4", "This is the description of event5");
-          for ($i = 0; $i < count($arr); $i++) {
-            $url = img("thumbnail-lol.jpg", "img-circle center-block", "event");
+          foreach ($event_list as $event):
+            $url = img($event->image_path, "img-circle center-block", "event");
             $str = "";
             $str .= "<div class='col-md-4'>";
             $str .= "<div class='thumbnail'>";
             $str .= $url;
             $str .= "<div class='caption'>";
-            $str .= "<h3>" . $name[$i] . "</h3>";
-            $str .= "<p>" . $desc[$i] . "</p>";
-            $str .= "<p><a href='#' class='btn btn-primary' role='button'>Button</a> <a href='#' class='btn btn-default' role='button'>Button</a></p>";          
+            $str .= "<h3>" . $event->name . "</h3>";
+            $str .= "<p>" . $event->description . "</p>";
+            $str .= "<p><a href='#' class='btn btn-primary' role='button'>Button</a> <a href='#' class='btn btn-default' role='button'>Button</a></p>";
+            $str .= "<p>By " . $event->username . "</p>";         
             $str .= "</div>";
             $str .= "</div>";
             $str .= "</div>";
             echo $str;
-          }
+          endforeach
+         
+          
           ?>
           </div>
     </div>
