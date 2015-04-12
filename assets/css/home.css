@@ -1,0 +1,109 @@
+.circle_area
+{
+    display: block;
+    width: 300px;
+    height: 300px;
+    border-radius: 25px;
+}
+
+.main-container
+{
+	max-width:1400px;
+	padding-top:100px;
+}
+
+.functionnality
+{
+	margin-top: 50px;
+	padding-top: 100px;
+	background-color: #1C1D1F;
+}
+
+.thumbnail-icon{
+	color: #45BBFF;
+	text-align: center;
+	font-size: 30px;
+	float:left;
+	padding-right: 30px;
+	padding-bottom: 50px;
+}
+
+.right
+{
+	padding-left: 50px;
+	padding-right: 0px;
+	float: right;
+}
+
+.text-right
+{
+	text-align: right;
+}
+
+.thumbnail-icon:hover{
+    color: #0EF3FF;
+}
+
+.thumbnail-title{
+    font-family: 'OpenBold',Arial,sans-serif;
+	font-size: 20px;
+	padding-top: 30px;
+	font-weight: bold;
+	color: #5DB0F2;
+}
+
+.thumbnail-text{
+	padding-top: 10px;
+	color: #B6B8B7;
+	font-family: Arial;
+}
+
+h2
+{
+	text-align: center;
+}
+
+.fa-heart
+{
+   color: #F74933;
+}
+
+.space-100
+{
+	height: 100px;
+	display: block;
+}
+
+pre.prettyprint
+{
+	background-color: #ffffff;
+	border: 1px solid #999;
+	margin-top: 20px;
+	padding: 20px;
+	text-align: left;
+}
+
+.atv, .str
+{
+	color: #05AE0E;
+}
+
+.tag, .pln, .kwd
+{
+	color: #3472F7;
+}
+
+.atn
+{
+	color: #2C93FF;
+}
+
+.pln
+{
+	color: #333;
+}
+
+.com
+{
+	color: #999;
+}
