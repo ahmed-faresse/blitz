@@ -64,7 +64,8 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	//'hostname' => 'localhost',
+	'username' => 'ks300496.kimsufi.com',
 	'username' => 'blitz',
 	'password' => 'csulb',
 	'database' => 'blitz',
