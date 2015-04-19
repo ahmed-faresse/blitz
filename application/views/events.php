@@ -11,12 +11,10 @@
     <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
     <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js" defer></script>
     <script src="<?php echo js_url("jquery-1.10.2")?>" type="text/javascript" defer></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>  
 	<script src="<?php echo js_url("bootstrap")?>" type="text/javascript" defer></script>	
 	<script src="<?php echo js_url("ct-navbar")?>" type="text/javascript" defer></script>
 	<script src="<?php echo js_url("events")?>" type="text/javascript" defer></script>
-    <style>
-        
-    </style>
 </head>
 
 <body>
@@ -98,21 +96,26 @@
         </nav>
     </div><!--  end navbar -->
     <div class="container main">
-    	<div class='row'>
+      <div class="row">
+          <select>
+            <option value="all">No filter</option>
+            <option value="thumbnail-lol.jpg">League of Legends</option>
+            <option value="sc2.jpg">Starcraft II</option>
+            <option value="fifa.jpg">Fifa 15</option>
+          </select>
+          <button class="search btn btn-primary">Search</button>
+      </div>
+    	<div class='events row'>
           <?php
-          $arr = array(1, 2, 3, 4, 5);
-          $name = array("event1", "event2", "event3", "event4", "event5");
-          $desc = array("This is the description of event1", "This is the description of event2", "This is the description of event3", "This is the description of event4", "This is the description of event5");
-          foreach ($event_list as $event):
-            $url = img($event->image_path, "img-circle center-block", "event");
+          foreach ($event_list as $event): 
             $str = "";
             $str .= "<div class='col-md-4'>";
             $str .= "<div class='thumbnail'>";
-            $str .= $url;
+            $str .= img($event->image_path, "img-circle center-block", "event");;
             $str .= "<div class='caption'>";
             $str .= "<h3>" . $event->name . "</h3>";
-            $str .= "<p>" . $event->description . "</p>";
-            $str .= "<p><a href='#' class='btn btn-primary' role='button'>Button</a> <a href='#' class='btn btn-default' role='button'>Button</a></p>";
+            $str .= "<p>" . $event->short_description . "</p>";
+            $str .= "<p><a href='". site_url() ."eventpage/index/". $event->id . "' class='btn btn-primary' role='button'>View more</a> <a href='#' class='btn btn-default' role='button'>Button</a></p>";
             $str .= "<p>By " . $event->username . "</p>";         
             $str .= "</div>";
             $str .= "</div>";
