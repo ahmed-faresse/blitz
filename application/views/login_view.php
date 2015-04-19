@@ -13,6 +13,8 @@
      <label for="password">Password:</label>
      <input type="password" size="20" id="passowrd" name="password"/>
      <br/>
+     <a href="<?php echo site_url() . 'forgotpassword' ?>">Forgot password</a>
+     <br/>
      <input type="submit" value="Login"/>
    </form>
  </body>
