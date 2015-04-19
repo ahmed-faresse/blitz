@@ -99,7 +99,7 @@
       <div class="row">
           <select>
             <option value="all">No filter</option>
-            <option value="thumbnail-lol.jpg">League of Legends</option>
+            <option value="thumbnail_lol.jpg">League of Legends</option>
             <option value="sc2.jpg">Starcraft II</option>
             <option value="fifa.jpg">Fifa 15</option>
           </select>
