@@ -7,11 +7,11 @@
 	<link href="<?php echo css_url("pe-icon-7-stroke")?>" rel="stylesheet" type="text/css" />
 	<link href="<?php echo css_url("ct-navbar")?>" rel="stylesheet" type="text/css" />
 	<link href="<?php echo css_url("events")?>" rel="stylesheet" type="text/css" />  
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js" defer></script>
-    <script src="<?php echo js_url("jquery-1.10.2")?>" type="text/javascript" defer></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>  
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
+  <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js" defer></script>
+  <script src="<?php echo js_url("jquery-1.10.2")?>" type="text/javascript" defer></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>  
 	<script src="<?php echo js_url("bootstrap")?>" type="text/javascript" defer></script>	
 	<script src="<?php echo js_url("ct-navbar")?>" type="text/javascript" defer></script>
 	<script src="<?php echo js_url("events")?>" type="text/javascript" defer></script>

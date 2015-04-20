@@ -9,7 +9,8 @@ class Forgotpassword extends CI_Controller {
  
  function index()
  {
-   $this->load->view('forgotpassword_view');
+ 	$this->load->helper('assets');
+    $this->load->view('forgotpassword_view');
  }
  
 }
