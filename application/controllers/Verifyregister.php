@@ -26,7 +26,10 @@ class VerifyRegister extends CI_Controller {
    else
    {
      //Go to private area
-      //redirect('login', 'refresh');
+      $message = "You have been successfully registered";
+      $data["message"] = $message;
+      $this->load->view('login_view',$data);      
+      //$this->redirect('login', 'refresh');
    }
  }
 
