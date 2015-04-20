@@ -6,7 +6,7 @@ Class Event extends CI_Model
  {
    if ($id != null)
    {
-      $this -> db -> select('id, name, description, short_description, place, date, image_path, image_large_path');
+      $this -> db -> select('id, name, description, short_description, place, date, price_asked, price_funded, image_path, image_large_path');
       $this -> db -> from('events');
       $this -> db -> where("id", $id); 
 
@@ -18,7 +18,7 @@ Class Event extends CI_Model
 
  function get_events()
  {
-   $this -> db -> select('events.id, username, name, description, short_description, image_path');
+   $this -> db -> select('events.id, username, name, description, short_description, price_asked, price_funded, image_path');
    $this -> db -> from('events');
    $this -> db -> join('users', 'events.author_id = users.id'); 
 

@@ -1,6 +1,6 @@
 .main
 {
-	margin-top:100px;
+	margin-top:88px;
 	background-color: #1C1D1F;
 	padding: 0px 0px;
 	color: #45BBFF;
@@ -14,21 +14,58 @@
 
 .main .infos
 {
-	padding: 0px 40px;
+	padding: 0px 60px;
 }
 
 .main .description
 {
 	text-align: justify;
+	margin-bottom: 50px;
+	margin-top: 50px;
 }
 
-.main .date
+.main .fa
 {
+	font-size: 4em;
+}
+
+progress {
+	width: 50%;
+	height: 14px;
+	margin: 50px auto;
+	display: block;
+	/* Important Thing */
+	-webkit-appearance: none;
+	border: none;
+}
+
+/* All good till now. Now we'll style the background */
+progress::-webkit-progress-bar {
+	background: black;
+	border-radius: 50px;
+	padding: 2px;
+	box-shadow: 0 1px 0px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Now the value part */
+progress::-webkit-progress-value {
+	border-radius: 50px;
+	box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+	background:
+		-webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-webkit-linear-gradient(left, #45BBFF, #30AE3A);
 	
-	float: right;
+	/* Looks great, now animating it */
+	background-size: 25px 14px, 100% 100%, 100% 100%;
+	-webkit-animation: move 5s linear 0 infinite;
 }
 
-.main .place
-{
-	float: left;
+/* That's it! Now let's try creating a new stripe pattern and animate it using animation and keyframes properties  */
+
+@-webkit-keyframes move {
+	0% {background-position: 0px 0px, 0 0, 0 0}
+	100% {background-position: -100px 0px, 0 0, 0 0}
 }
+
+/* Prefix-free was creating issues with the animation */
