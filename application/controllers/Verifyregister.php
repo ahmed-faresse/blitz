@@ -14,9 +14,9 @@ class VerifyRegister extends CI_Controller {
    //This method will have the credentials validation
    $this->load->library('form_validation');
 
-   $this->form_validation->set_rules('email','Email','xss_clean|required|trim|valid_email');
-   $this->form_validation->set_rules('username', 'Username','xss_clean|required|trim');
-   $this->form_validation->set_rules('password', 'Password','trim|xss_clean|required|callback_check_database');
+   $this->form_validation->set_rules('email','email','xss_clean|required|trim|valid_email');
+   $this->form_validation->set_rules('username', 'username','xss_clean|required|trim');
+   $this->form_validation->set_rules('password', 'password','trim|xss_clean|required|callback_check_database');
 
    if($this->form_validation->run() == FALSE)
    {
@@ -26,7 +26,10 @@ class VerifyRegister extends CI_Controller {
    else
    {
      //Go to private area
-      redirect('login', 'refresh');
+      $message = "You have been successfully registered";
+      $data["message"] = $message;
+      $this->load->view('login_view',$data);      
+      //$this->redirect('login', 'refresh');
    }
  }
 
@@ -61,7 +64,14 @@ private function send_mail($email,$username){
           $headers = "MIME-Version: 1.0" . "\r\n";
           $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
           $headers .= 'From: <ahmed.faresse@gmail.com>' . "\r\n";
-          mail($to,$subject,$message,$headers);
+          $check_mail = mail($to,$subject,$message,$headers);
+          if ($check_mail){
+            echo 'Success : Email sent';
+
+          }
+          else{
+            print_r(error_get_last());
+          }
         }
         else 
         {

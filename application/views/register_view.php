@@ -108,6 +108,8 @@
       </div>
       <?php echo validation_errors(); ?>
       <?php echo form_open('verifyregister', array('class' => 'form-register')); ?>
+      <br/>
+
         <div>
         <label for="username">Username</label>
           <input name="username" id="username" type="text" class="form-control" placeholder="Username"> 
