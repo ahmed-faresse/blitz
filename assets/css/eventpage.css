@@ -32,7 +32,8 @@
 progress {
 	width: 50%;
 	height: 14px;
-	margin: 50px auto;
+	margin: 0px auto;
+	margin-bottom: 20px;
 	display: block;
 	/* Important Thing */
 	-webkit-appearance: none;

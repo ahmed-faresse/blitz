@@ -32,13 +32,15 @@ class Events extends CI_Controller{
  			foreach ($data as $event): 
             $str = "";
             $str .= "<div class='col-md-4'>";
-            $str .= "<div class='thumbnail'>";
+            $str .= "<div class='element'>";
             $str .= img($event->image_path, "img-circle center-block", "event");;
-            $str .= "<div class='caption'>";
+            $str .= "<div class='infos'>";
             $str .= "<h3>" . $event->name . "</h3>";
             $str .= "<p>" . $event->short_description . "</p>";
             $str .= "<p><a href='". site_url() ."eventpage/index/". $event->id . "' class='btn btn-primary' role='button'>View more</a> <a href='#' class='btn btn-default' role='button'>Button</a></p>";
-            $str .= "<p>By " . $event->username . "</p>";         
+            $str .= "<p>By " . $event->username . "</p>";     
+            $str .= "<p>$". $event->price_funded . " / $ " . $event->price_asked . "</p>";
+            $str .= "<progress max=" . $event->price_asked . " value=" . $event->price_funded . "></progress>"; 
             $str .= "</div>";
             $str .= "</div>";
             $str .= "</div>";

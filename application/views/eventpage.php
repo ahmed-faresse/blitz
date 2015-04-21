@@ -127,6 +127,7 @@
       </div>
       <div class="row">
         <div class="col-md-12">
+            <p>$<?php echo "$event->price_funded";?> / $<?php echo "$event->price_asked";?></p>
             <progress max=<?php echo "$event->price_asked";?> value=<?php echo "$event->price_funded";?>></progress>
         </div>
       </div>

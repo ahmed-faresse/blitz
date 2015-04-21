@@ -108,10 +108,10 @@
   <div class="container">
     <div class="login-form">
       <h1 class="text-center">Log in to Blitz</h1>
+      <?php echo validation_errors('<p class="alert alert-danger">', '</p>'); ?>
       <div class="form-header">
         <em class="fa fa-user"></em>
       </div>
-      <?php echo validation_errors(); ?>
       <?php echo form_open('verifylogin', array('class' => 'form-signin')); ?>
         <label for="username">Username</label>
         <input name="username" id="username" type="text" class="form-control" placeholder="Username" autofocus>

@@ -29,7 +29,7 @@ Class Event extends CI_Model
 
  function search_events($value)
  {
-   $this -> db -> select('events.id, username, name, description, short_description, image_path');
+   $this -> db -> select('events.id, username, name, description, short_description, price_asked, price_funded, image_path');
    $this -> db -> from('events');
    $this -> db -> join('users', 'events.author_id = users.id');
    $this -> db -> where("image_path LIKE '%{$value}%'");
