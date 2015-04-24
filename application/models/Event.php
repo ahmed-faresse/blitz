@@ -37,5 +37,13 @@ Class Event extends CI_Model
    $query = $this -> db -> get();
    return $query->result();
  }
+
+ function fund_event($event_id, $amount)
+ {
+   $event = $this->get_full_event($event_id);
+
+   $this -> db -> where('id', $event_id);
+   $this -> db -> update('events', array('price_funded' => $event->price_funded  + $amount));
+ }
 }
 ?>

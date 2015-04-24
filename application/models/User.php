@@ -34,7 +34,7 @@ Class User extends CI_Model
     }
     else
     {
-      return false;
+        return false;
     }
   }
 
@@ -54,11 +54,6 @@ Class User extends CI_Model
    {
      return false;
    }
-  }
-
-  function donate($id, $amount)
-  {
-    
   }
 }
 ?>

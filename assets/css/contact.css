@@ -3,3 +3,12 @@
 }
 
 h1{font-family: Pacifico;}
+
+.btn
+{
+  background-color: #45BBFF;
+  color: #ffffff;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  transition: background-color 300ms linear 0s;
+}	

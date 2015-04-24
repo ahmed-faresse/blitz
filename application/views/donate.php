@@ -18,11 +18,11 @@
     <?php } ?>
     
 	 <div class="row">
-        <?php echo form_open('verifyDonate', array('class' => 'form-contact')); ?>
+        <?php echo form_open('verifyDonate', '', array('eventid' => $event->id)); ?>
 
             <div class="form-group">
                 <label for="amount">Amount</label>
-                <input name="amount" id="amount" type="text" class="form-control" placeholder="Enter the amount you want to donate" autofocus>
+                <input name="amount" id="amount" type="range" min="0" max="<? echo ($event->price_asked - $event->price_funded) ?>" step="5" value="0">
             </div>
             <div class="form-group radio-card">
            		<div class="col-md-3">
@@ -52,19 +52,19 @@
             </div>
             <div class="form-group">
                 <label for="name">Name on the card</label>
-                <input name="name" id="name" type="text" class="form-control" placeholder="" autofocus>
+                <input name="name" id="name" type="text" class="form-control" placeholder="Placeholder name" autofocus>
             </div>
             <div class="form-group">
                 <label for="number">Card Number</label>
-                <input name="number" id="number" type="text" class="form-control" placeholder="" autofocus>
+                <input name="number" id="number" type="text" class="form-control" placeholder="Card Number" autofocus>
             </div>
             <div class="form-group">
                 <label for="crypto">Card Cryptogram</label>
-                <input name="crypto" id="crypto" type="text" class="form-control" placeholder="" autofocus>
+                <input name="crypto" id="crypto" type="text" class="form-control" placeholder="Card Cryptogram" autofocus>
             </div>
             <div class="form-group">
                 <label for="date">Expiration date (MM/YY)</label>
-                <input name="date" id="date" type="text" class="form-control" placeholder="" autofocus>
+                <input name="date" id="date" type="text" class="form-control" placeholder="Expiration date (MM/YY)" autofocus>
             </div>
             <button class="btn btn-block" type="submit">Send</button>
         </form>

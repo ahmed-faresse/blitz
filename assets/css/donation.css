@@ -3,6 +3,18 @@
 	margin-top: 100px;
 }
 
+.form-group
+{
+	margin-bottom: 50px;
+}
+
+.radio-card
+{
+	text-align: center;
+	padding-bottom:  50px;
+
+}
+
 .radio-card div img
 {
 	width: 105px;
@@ -10,4 +22,36 @@
 	vertical-align:middle;
 }
 
-h1{font-family: Pacifico;}
+.hidden_field
+{
+	width: 0;
+	height: 0;
+	visibility: hidden;
+}
+
+.btn
+{
+  background-color: #45BBFF;
+  color: #ffffff;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  transition: background-color 300ms linear 0s;
+}
+
+h1
+{
+	font-family: Pacifico;
+}
+
+@font-face {
+  font-family: 'SoftElegance';
+  src: url('../fonts/Soft Elegance.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+label
+{
+	font-family: SoftElegance;
+	font-size:1.5em;
+}
