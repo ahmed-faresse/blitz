@@ -56,5 +56,9 @@ Class User extends CI_Model
    }
   }
 
+  function donate($id, $amount)
+  {
+    
+  }
 }
 ?>

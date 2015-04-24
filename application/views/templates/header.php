@@ -1,32 +1,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title><?php $title ?></title>
-        <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="<?php echo css_url("bootstrap")?>" rel="stylesheet" type="text/css" />
-        <link href="<?php echo css_url("pe-icon-7-stroke")?>" rel="stylesheet" type="text/css" />
-        <link href="<?php echo css_url("ct-navbar")?>" rel="stylesheet" type="text/css" />
-        <link href="<?php echo css_url("login")?>" rel="stylesheet" type="text/css" />
-        <link href="<?php echo css_url("contact")?>" rel="stylesheet" type="text/css" />
-        <script src="<?php echo js_url("jquery.min")?>" type="text/javascript" defer></script>
-        <script src="<?php echo js_url("bootstrap")?>" type="text/javascript" defer></script>
-        <script src="<?php echo js_url("ct-navbar")?>" type="text/javascript" defer></script>
-        <script src="<?php echo js_url("jquery.validate.min")?>" type="text/javascript" defer></script>
-        <script src="<?php echo js_url("login")?>" type="text/javascript" defer></script>
-    </head>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><?php echo $title ?></title>
+    <? foreach($stylesheets as $stylesheet): ?>
+        <?= css_url($stylesheet[0], $stylesheet[1]); ?>    
+    <? endforeach; ?>
+    <? foreach($javascripts as $javascript): ?>
+        <?= js_url($javascript[0], $javascript[1]); ?>
+    <? endforeach; ?>
+</head>
 
     <body>
         <div id="navbar-full">
             <div id="navbar">
-                <nav class="navbar navbar-ct-blue navbar-fixed-top" role="navigation">
+                <nav class="navbar navbar-ct-blue navbar-fixed-top <? if (strcmp($this->router->fetch_class(), "home") === 0)
+                echo 'navbar-transparent' ;?> " role="navigation">
 
                     <div class="container">
                         <!-- Brand and toggle get grouped for better mobile display -->
@@ -83,7 +75,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="events/logout">
+                                    <a href="home/logout">
                                         <i class="pe-7s-note2"></i>
                                         <p>Log out</p>
                                     </a>';
@@ -103,4 +95,5 @@
                 </div><!-- /.container-fluid -->
             </nav>
          </div><!--  end navbar -->
-     </div>
+         <? if (strcmp($this->router->fetch_class(), "home") !== 0)
+                echo '</div>' ;?> 
