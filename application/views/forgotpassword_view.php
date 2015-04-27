@@ -1,10 +1,10 @@
   <div class="container">
     <div class="login-form">
       <h1 class="text-center">Forgot Password?</h1>
+      <?php echo validation_errors('<p class="alert alert-danger">', '</p>'); ?>
       <div class="form-header">
         <em class="fa fa-user"></em>
       </div>
-      <?php echo validation_errors('<p class="alert alert-danger">', '</p>'); ?>
        <?php echo form_open('verifyforgotpassword', array('class' => 'form-register')); ?>
         <div>
           <label for="email">Email</label>

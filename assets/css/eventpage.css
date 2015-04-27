@@ -7,21 +7,30 @@
 	text-align: center;
 }
 
-.main img
+.image img
 {
 	max-width:100%;
+}
+
+.margin
+{
+	margin-top: 30px;
 }
 
 .main .description
 {
 	text-align: justify;
-	margin-bottom: 50px;
-	margin-top: 50px;
 }
 
 .main .fa
 {
 	font-size: 4em;
+}
+
+#map_canvas
+{
+	margin: 0 auto;
+	margin-bottom: 50px ;
 }
 
 progress {

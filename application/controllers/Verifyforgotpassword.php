@@ -49,12 +49,8 @@ class Verifyforgotpassword extends CI_Controller {
    else
    {
      //Go to private area
-     array_push($this->stylesheets,'home',0);
-     $message = "We have sent you a new password, please check your mail box. Thank you!";
-     $data["message_password"] = $message;
-     $this->load->view('templates/header', $header);
-     $this->load->view('index', $data);
-     $this->load->view('templates/footer');
+     $this->session->set_flashdata('message_password', "We have sent you a new password, please check your mail box. Thank you!");
+     redirect('home', 'refresh');
    }
 
  }

@@ -2,10 +2,10 @@
     <div class="login-form">
       
       <h1 class="text-center">Blitz Registration</h1>
+      <?php echo validation_errors('<p class="alert alert-danger">', '</p>'); ?>
       <div class="form-header">
         <em class="fa fa-user"></em>
       </div>
-      <?php echo validation_errors('<p class="alert alert-danger">', '</p>'); ?>
       <?php echo form_open('verifyregister', array('class' => 'form-register')); ?>
       <br/>
 

@@ -26,7 +26,18 @@ class Eventpage extends CI_Controller{
           'stylesheets' => $this->get_stylesheets(),
           'javascripts' => $this->get_javascripts()
         );
-  		$data['event'] = $this->event->get_full_event($id);
+      $data['event'] = $this->event->get_full_event($id);
+      $this->load->library('googlemaps');
+      $config['apikey'] = 'AIzaSyDAlpwQTVFTeyESt8wUFqhp-DaeFMTxhV8';
+      $config['map_width'] = '70%';
+      $config['map_height'] = '500px';
+      $config['center'] = $data['event']->place;
+      $this->googlemaps->initialize($config);
+      $marker = array();
+      $marker['position'] = $data['event']->place;
+      $marker['title'] = $data['event']->place;
+      $this->googlemaps->add_marker($marker);
+      $data['map'] = $this->googlemaps->create_map();
   		$this->load->helper('assets');
       $this->load->view('templates/header', $header);
   		$this->load->view('eventpage', $data);

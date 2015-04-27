@@ -3,8 +3,9 @@
 </div>
  <div class="main">
         <?php
-      if (isset($message_password)){
-              echo '<p class="alert alert-success alert-dismissible" role="alert">' . $message_password . ' <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></p> ';
+      $message = $this->session->flashdata('message_password');
+      if (isset($message)){
+              echo '<p class="alert alert-success alert-dismissible" role="alert">' . $message . ' <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></p> ';
       }
       ?>
         <div class="container tim-container main-container">
