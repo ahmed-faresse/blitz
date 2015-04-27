@@ -1,6 +1,11 @@
   <div class="container">
     <div class="login-form">
       <h1 class="text-center">Log in to Blitz</h1>
+      <?php
+      if (isset($message)){
+              echo '<p class="alert alert-success">' . $message . '</p>';
+      }
+      ?>
       <?php echo validation_errors('<p class="alert alert-danger">', '</p>'); ?>
       <div class="form-header">
         <em class="fa fa-user"></em>

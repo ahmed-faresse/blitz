@@ -48,6 +48,8 @@ class Verifyforgotpassword extends CI_Controller {
    else
    {
      //Go to private area
+     $message = "We have sent you a new password, please check your mail box. Thank you!";
+     $data["message_password"] = $message;
      redirect('home', 'refresh');
    }
 
