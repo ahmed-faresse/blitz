@@ -7,7 +7,7 @@ class Verifyforgotpassword extends CI_Controller {
     array('pe-icon-7-stroke', 0),
     array('ct-navbar', 0),
     array('login', 0),
-    array('home', 0),
+    //array('home', 0),
     array('http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css', 1),
     array('http://fonts.googleapis.com/css?family=Pacifico', 1)
    );
@@ -49,6 +49,7 @@ class Verifyforgotpassword extends CI_Controller {
    else
    {
      //Go to private area
+     array_push($this->stylesheets,'home',0);
      $message = "We have sent you a new password, please check your mail box. Thank you!";
      $data["message_password"] = $message;
      $this->load->view('templates/header', $header);
