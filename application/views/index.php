@@ -2,6 +2,11 @@
             <div class="img-src" style="background-image: url('<?php echo img_url('bg.png')?>')"></div>
 </div>
  <div class="main">
+        <?php
+      if (isset($message_password)){
+              echo '<p class="alert alert-success alert-dismissible" role="alert">' . $message_password . ' <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></p> ';
+      }
+      ?>
         <div class="container tim-container main-container">
         <div class="col-lg-4">
           <a href="catalog.php#Stringed" class="circle_area"><?php echo img("lol.jpg", "img-circle center-block", "League of Legends image")?></a>

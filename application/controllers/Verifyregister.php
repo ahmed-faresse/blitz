@@ -52,8 +52,11 @@ class VerifyRegister extends CI_Controller {
      //Go to private area
       $message = "You have been successfully registered";
       $data["message"] = $message;
-      $this->load->view('login_view',$data);      
-      //$this->redirect('login', 'refresh');
+      $this->load->view('templates/header', $header);
+      $this->load->view('login_view', $data);   
+      $this->load->view('templates/footer');   
+   
+      //redirect('login', 'refresh',$data);
    }
  }
 
@@ -89,18 +92,7 @@ private function send_mail($email,$username){
           $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
           $headers .= 'From: <ahmed.faresse@gmail.com>' . "\r\n";
           $check_mail = mail($to,$subject,$message,$headers);
-          if ($check_mail){
-            echo 'Success : Email sent';
-
-          }
-          else{
-            print_r(error_get_last());
-          }
-        }
-        else 
-        {
-          echo 'Error: Send mail';
-        }
+  }
 }
 
  function check_database($password)

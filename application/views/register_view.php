@@ -5,7 +5,7 @@
       <div class="form-header">
         <em class="fa fa-user"></em>
       </div>
-      <?php echo validation_errors(); ?>
+      <?php echo validation_errors('<p class="alert alert-danger">', '</p>'); ?>
       <?php echo form_open('verifyregister', array('class' => 'form-register')); ?>
       <br/>
 
