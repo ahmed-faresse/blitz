@@ -31,7 +31,7 @@
                             </button>
                             <a class="navbar-brand navbar-brand-logo" href="<?php echo str_replace(base_url(), 'p/index.php/', '/') ?>">
                                 <div class="logo">
-                                    <img src="https://s3.amazonaws.com/creativetim_bucket/new_logo.png">
+                                    <? echo img("blitz_logo.png", "", "blitz logo") ?>
                                 </div>
                                 <div class="brand"> Blitz </div>
                             </a>
@@ -46,48 +46,40 @@
                                         <p>Events</p>
                                     </a>
                                 </li>
-
                                 <li>
-                                    <a href="#">
-                                        <i class="pe-7s-mail">
-                                            <span class="label">23</span>
-                                        </i>
-                                        <p>Messages</p>
-                                    </a>
-                                </li>
-
-                                <li class="dropdown">
                                     <?php if(isset($_SESSION['logged_in']))
                                     {
-                                        echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        echo '<a href="account">
                                             <i class="pe-7s-user"></i>
                                             <p>Account</p>
-                                        </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Action</a></li>
-                                        <li><a href="#">Another action</a></li>
-                                        <li><a href="#">Something</a></li>
-                                        <li><a href="#">Another action</a></li>
-                                        <li><a href="#">Something</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Separated link</a></li>
-                                    </ul>
+                                        </a>                              
                                 </li>
-
                                 <li>
                                     <a href="home/logout">
-                                        <i class="pe-7s-note2"></i>
+                                        <i class="pe-7s-power"></i>
                                         <p>Log out</p>
                                     </a>';
                                 }
                                 else
                                 {
                                     echo '<a href="'. site_url() . 'login">
-                                    <i class="pe-7s-note2"></i>
+                                    <i class="pe-7s-key"></i>
                                     <p>Log in</p>
+                                    </a>
+                                    </li>
+                                    <li>
+                                    <a href="register">
+                                        <i class="pe-7s-add-user"></i>
+                                        <p>Register</p>
                                     </a>';
                                 }
                                 ?>
+                             </li>
+                             <li>
+                                <a href="contact">
+                                    <i class="pe-7s-mail"></i>
+                                    <p>Contact</p>
+                                </a>
                              </li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
