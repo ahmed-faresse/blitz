@@ -1,0 +1,38 @@
+.account {
+    margin-top: 150px;
+}
+
+h1{font-family: Pacifico;}
+
+.btn-login
+{
+    background-color: #6BB9F0;
+    color: #ffffff;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    transition: background-color 300ms linear 0s;
+}
+
+.btn-save
+{
+    background-color: #36D7B7;
+    color: #ffffff;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    transition: background-color 300ms linear 0s;
+}
+
+.panel-heading-account
+{
+    background-color: #45BBFF;
+    color: #ffffff;
+}
+
+.panel-body-account
+{
+    background-color: #F2F2F2;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    transition: background-color 300ms linear 0s;
+}

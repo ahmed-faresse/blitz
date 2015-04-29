@@ -1,59 +1,83 @@
 <?php
 Class User extends CI_Model
 {
- function login($username, $password)
- {
-   $this -> db -> select('id, username, email, password');
-   $this -> db -> from('users');
-   $this -> db -> where('username', $username);
-   $this -> db -> where('password', MD5($password));
-   $this -> db -> limit(1);
+    function login($username, $password)
+     {
+       $this -> db -> select('id, username, email, password');
+       $this -> db -> from('users');
+       $this -> db -> where('username', $username);
+       $this -> db -> where('password', MD5($password));
+       $this -> db -> limit(1);
 
-   $query = $this -> db -> get();
+       $query = $this -> db -> get();
 
-   if($query -> num_rows() == 1)
-   {
-     return $query->result();
-   }
-   else
-   {
-     return false;
-   }
- }
+       if($query -> num_rows() == 1)
+       {
+         return $query->result();
+       }
+       else
+       {
+         return false;
+       }
+     }
 
-  function register($email,$username,$password)
-  {
-    $this -> db -> set('email', $email);
-    $this -> db -> set('username', $username);
-    $this -> db -> set('password', MD5($password));
-    $this -> db -> insert('users');
-
-    if($this->db->affected_rows() > 0)
+    function register($email,$username,$password)
     {
-        return true;
+        $this->db->set('email', $email);
+        $this->db->set('username', $username);
+        $this->db->set('password', MD5($password));
+        $this->db->insert('users');
+
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
-    else
+
+    function forgotpassword($email)
+      {
+        $this -> db -> select('id, username,email,password');
+        $this -> db -> from('users');
+        $this -> db -> where('email', $email);
+        $this -> db -> limit(1);
+
+         $query = $this -> db -> get();
+
+       if($query -> num_rows() == 1)
+       {
+         return $query->result();
+       }
+       else
+       {
+         return false;
+       }
+      }
+
+    function getUserInformation($username)
     {
-        return false;
+        $this->db->select("*");
+        $this->db->from("users");
+        $this->db->where("username", $username);
+        $this->db->limit(1);
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() == 1) {
+            return $query->result();
+        }
+        else {
+            return false;
+        }
     }
-  }
 
-  function forgotpassword($email){
-    $this -> db -> select('id, username,email,password');
-    $this -> db -> from('users');
-    $this -> db -> where('email', $email);
-    $this -> db -> limit(1);
+    function changePassword($id, $newPassword) {
+        $data = array(
+            'password' => $newPassword,
+        );
 
-     $query = $this -> db -> get();
-
-   if($query -> num_rows() == 1)
-   {
-     return $query->result();
-   }
-   else
-   {
-     return false;
-   }
-  }
+        $this->db->where('id', $id);
+        $this->db->update('users', $data);
+    }
 }
 ?>
