@@ -6,14 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $title ?></title>
-    <? foreach($stylesheets as $stylesheet): ?>
-        <?= css_url($stylesheet[0], $stylesheet[1]); ?>    
-    <? endforeach; ?>
-    <? foreach($javascripts as $javascript): ?>
-        <?= js_url($javascript[0], $javascript[1]); ?>
-    <? endforeach; ?>
+    <? foreach($stylesheets as $stylesheet):
+        echo css_url($stylesheet[0], $stylesheet[1]);   
+    endforeach;
+    echo css_url('footer', 0);
+    foreach($javascripts as $javascript):
+        echo js_url($javascript[0], $javascript[1]);
+    endforeach;
+    echo js_url('url', 0); ?>
 </head>
-
+    
     <body>
         <div id="navbar-full">
             <div id="navbar">

@@ -70,6 +70,7 @@ class Update extends CI_Controller{
           'stylesheets' => $this->get_stylesheets(),
           'javascripts' => $this->get_javascripts()
         );
+    
     $this->load->library('form_validation');
     $data['event'] = $this->event->get_full_event($id);
 

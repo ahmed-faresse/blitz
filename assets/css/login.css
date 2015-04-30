@@ -6,20 +6,6 @@ body {
 	background: #eee !important;	
 }
 
-footer
-{ 
-    padding-top: 10px; 
-    height: 4em;
-    background-color: #222222;
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 50px;
-    font-size: 70%;
-    color: #8b8b8b;
-    border-radius: 3px;
-    height: 40px;
-}
-
 td
 {
   background-color: #FFFFFF;

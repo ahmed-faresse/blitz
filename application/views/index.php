@@ -10,22 +10,22 @@
       ?>
         <div class="container tim-container main-container">
         <div class="col-lg-4">
-          <a href="catalog.php#Stringed" class="circle_area"><?php echo img("lol.jpg", "img-circle center-block", "League of Legends image")?></a>
+          <a href="<?php echo site_url() . 'events' ?>" class="circle_area"><?php echo img("lol.jpg", "img-circle center-block", "League of Legends image")?></a>
           <h2>League of Legends</h2>
           <p class="justify" >Fund or join the Summoner's Rift for 5 versus 5 epic fights</p>
-          <p><a class="btn btn-default" href="catalog.php#Stringed" role="button">View catalog &raquo;</a></p>
+          <p><a class="btn btn-info" href="<?php echo site_url() . 'events' ?>" role="button">View events &raquo;</a></p>
         </div>
         <div class="col-lg-4">
-          <a href="catalog.php#Percussion" class="circle_area"><?php echo img("fifa.jpg", "img-circle center-block", "Fifa image")?></a>
+          <a href="<?php echo site_url() . 'events' ?>" class="circle_area"><?php echo img("fifa.jpg", "img-circle center-block", "Fifa image")?></a>
           <h2>Fifa</h2> 
           <p class="justify">Organize or participate in a Fifa tournament for crazy football matches</p>
-          <p><a class="btn btn-default" href="catalog.php#Percussion" role="button">View catalog &raquo;</a></p>
+          <p><a class="btn btn-info" href="<?php echo site_url() . 'events' ?>" role="button">View events &raquo;</a></p>
         </div>
         <div class="col-lg-4">
-          <a href="catalog.php#Wind" class="circle_area"><?php echo img("sc2.jpg", "img-circle center-block", "Starcraft 2 image")?></a>
+          <a href="<?php echo site_url() . 'events' ?>" class="circle_area"><?php echo img("sc2.jpg", "img-circle center-block", "Starcraft 2 image")?></a>
           <h2>Starcraft II</h2>
           <p class="justify">Donate or play to see some Zerg rushes in amazing Starcraft II battles</p>
-          <p><a class="btn btn-default" href="catalog.php#Wind" role="button">View catalog &raquo;</a></p>
+          <p><a class="btn btn-info" href="<?php echo site_url() . 'events' ?>" role="button">View events &raquo;</a></p>
         </div>
       </div>
 

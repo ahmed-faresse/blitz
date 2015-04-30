@@ -32,7 +32,6 @@ class Donate extends CI_Controller{
         'javascripts' => $this->get_javascripts()
     );
     $data['success'] = false;
-
     $data['event'] = $this->event->get_full_event($id);
   	$this->load->helper('assets');
     $this->load->view('templates/header', $header);

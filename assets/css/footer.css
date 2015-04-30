@@ -1,0 +1,20 @@
+#footer
+{
+	width: 100%;
+	margin: 60px 0 0 0;
+	padding: 10px;
+	background-color: #1C1D1F;
+}
+
+#footer img
+{
+	display: block;
+	margin : 0 auto;
+	text-align: center;
+}
+
+#full
+{
+	min-height:100%;
+	position:relative;
+}

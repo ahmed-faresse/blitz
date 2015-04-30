@@ -332,7 +332,6 @@ h1 .subtitle{
     padding: 0;
 }
 .navbar-brand-logo .logo{
-    border: 1px solid #333333;
     border-radius: 50%;
     float: left;
     overflow: hidden;

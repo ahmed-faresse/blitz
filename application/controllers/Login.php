@@ -33,8 +33,8 @@ class Login extends CI_Controller {
         );
  	$this->load->helper('assets');
  	$this->load->view('templates/header', $header);
-    $this->load->view('login_view');
-    $this->load->view('templates/footer');
+  $this->load->view('login_view', $data);
+  $this->load->view('templates/footer');
  }
  
  protected function get_stylesheets() {
