@@ -9,7 +9,7 @@ Class Event extends CI_Model
                'description' => $desc,
                'price_asked' => $price,
                'place' => $place,
-               'date' => date("Y-m-d H:i:s", $date . " " . $time)
+               'date' => date("Y-m-d H:i:s", strtotime($date . " " . $time))
             );
 
    $this -> db -> where('id', $id);

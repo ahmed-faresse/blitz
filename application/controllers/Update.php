@@ -115,9 +115,7 @@ class Update extends CI_Controller{
     if ($this->form_validation->run() == TRUE)
     {
       $this->event->update_event($id, $_POST['title'], $_POST['description'], $_POST['price'],
-                                 $_POST['place'], $_POST['date'], $_POST['time']);
-     // echo date('d F, Y h:iA', strtotime($_POST['date'] . " " . $_POST['time']));
-      echo date("Y-m-d H:i:s", $_POST['date'] . " " . $_POST['time']);
+                                 $_POST['place'], str_replace(",", "", $_POST['date']), $_POST['time']);
       $data['title'] = $_POST['title'];
       $data['price'] = $_POST['price'];
       $data['description'] = $_POST['description'];
