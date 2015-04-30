@@ -6,7 +6,7 @@
 
 .main .element
 {
-	height:600px;
+	height:660px;
 	text-align: center;
 	margin-bottom: 30px;
 	margin-top: 30px;
@@ -16,6 +16,7 @@
 	border-radius: 10px;
 	border-color: #45BBFF;
 	background-color: #1C1D1F;
+	overflow: hidden;
 }
 
 .main .infos
@@ -25,10 +26,25 @@
 	/*background: rgb(240, 240, 240);*/
 }
 
+.main .infos div
+{
+	margin-bottom: 5px;
+}
+
+.buttons
+{
+	margin-top: 20px;
+}
+
+.meta
+{
+	margin-top: 30px;
+}
+
 .filter-event
 {
 	margin-top: 19px;
-	width:92%;
+	width:88%;
 	background-color: #1C1D1F;
 	color: #45BBFF;
 }

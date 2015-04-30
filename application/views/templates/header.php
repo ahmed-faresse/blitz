@@ -49,13 +49,13 @@
                                 <li>
                                     <?php if(isset($_SESSION['logged_in']))
                                     {
-                                        echo '<a href="account">
+                                        echo '<a href="'. site_url() . 'account/">
                                             <i class="pe-7s-user"></i>
                                             <p>Account</p>
                                         </a>                              
                                 </li>
                                 <li>
-                                    <a href="home/logout">
+                                    <a href="'. site_url() . 'home/logout/">
                                         <i class="pe-7s-power"></i>
                                         <p>Log out</p>
                                     </a>';
@@ -76,7 +76,7 @@
                                 ?>
                              </li>
                              <li>
-                                <a href="contact">
+                                <a href= <? echo site_url() . "contact";?>>
                                     <i class="pe-7s-mail"></i>
                                     <p>Contact</p>
                                 </a>

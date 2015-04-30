@@ -59,10 +59,6 @@ class VerifyDonate extends CI_Controller {
           'javascripts' => $this->get_javascripts()
         );
 
-        $data['success'] = false;
-        $data['email'] = "";
-        $data['message'] = "";
-
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('cardType', 'cardType', 'required',

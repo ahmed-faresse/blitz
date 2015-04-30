@@ -27,7 +27,7 @@
     </div>
     <div class="col-md-3 col-md-offset-2 place">
       <i class="fa fa-clock-o"></i>
-      <p><?php echo date('F d, Y<\b\\r>h:mA', strtotime($event->date)) ; ?></p>
+      <p><?php echo date('d F, Y<\b\\r>h:iA', strtotime($event->date)) ; ?></p>
     </div>
   </div>
   <div class="row margin">

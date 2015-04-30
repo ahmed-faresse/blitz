@@ -30,6 +30,11 @@ class Events extends CI_Controller{
           'stylesheets' => $this->get_stylesheets(),
           'javascripts' => $this->get_javascripts()
         );
+      if($this->session->userdata('logged_in'))
+      {
+       $session_data = $this->session->userdata('logged_in');
+       $data['id'] = $session_data['id'];  
+      }
   		$data['event_list'] = $this->event->get_events();
   		$this->load->helper('assets');
       $this->load->view('templates/header', $header);
@@ -60,15 +65,23 @@ class Events extends CI_Controller{
             $str .= "<div class='infos'>";
             $str .= "<h3>" . $event->name . "</h3>";
             $str .= "<p>" . $event->short_description . "</p>";
-            $str .= "<p><a href='". base_url() . "eventpage/index/". $event->id . "' class='btn btn-primary' role='button'>View more</a> <a href='". base_url() . "donate/index/" . $event->id . "' class='btn btn-default' role='button'>Donate</a></p>";
-            $str .= "<p>By " . $event->username . "</p>";     
-            $str .= "<p>$". $event->price_funded . " / $ " . $event->price_asked . "</p>";
+            $str .= "<div class='buttons'><a href='". base_url() . "eventpage/index/". $event->id . "' class='btn btn-primary' role='button'>View more</a> <a href='". base_url() . "donate/index/" . $event->id . "' class='btn btn-default' role='button'>Donate</a>";
+            if(isset($_SESSION['logged_in']) && $this->session->userdata('logged_in')['id'] == $event->author_id)
+              $str .= " <a href='". base_url() . "update/index/". $event->id . "' class='btn btn-success' role='button'>Update</a>";
+            $str .= "</div>";
+            $str .= "<div class='meta'><span> <i class='fa fa-clock-o'></i>  " . date('F d, Y', strtotime($event->date)) . " </div>";
+            $str .= "<div> <i class='fa fa-map-marker'></i>  " . $event->place . " </div>";
+            if(isset($_SESSION['logged_in']) &&  $this->session->userdata('logged_in')['id'] == $event->author_id)
+              $str .= "<div> <i class='fa fa-user'></i>  By " . $event->username . " (You)</div>";
+            else
+              $str .= "<div> <i class='fa fa-user'></i>  By " . $event->username . " </div>";
+            $str .= "<div> <i class='fa fa-usd'></i>  " . $event->price_funded . " / " . $event->price_asked . " </div>";   
             $str .= "<progress max=" . $event->price_asked . " value=" . $event->price_funded . "></progress>"; 
             $str .= "</div>";
             $str .= "</div>";
             $str .= "</div>";
             echo $str;
-         	endforeach;
+          endforeach;
  		}
  	}
   protected function get_stylesheets() {
