@@ -18,14 +18,40 @@ class Eventpage extends CI_Controller{
 	function __construct(){
 	  	parent::__construct();
 	  	$this->load->model('event');
+      $this->load->model('registration');
 	}
 
-  	function index($id){
+  public function add_player($id)
+  {
+    if ($this->session->userdata('logged_in') && $this->event->increment_user($id) === true)
+    {
+      $session_data = $this->session->userdata('logged_in');
+      $this->registration->add_player_to_event($id, $session_data['id']);
+    }
+    redirect('eventpage/index/'. $id, 'refresh');
+  }
+
+  public function remove_player($id)
+  {
+    if ($this->session->userdata('logged_in') && $this->event->decrement_user($id) === true)
+    {
+      $session_data = $this->session->userdata('logged_in');
+      $this->registration->unregister_player($id, $session_data['id']);
+    }
+    redirect('eventpage/index/' . $id, 'refresh');
+  }
+
+  function index($id){
       $header = array(
           'title' => 'Blitz - Event Page',
           'stylesheets' => $this->get_stylesheets(),
           'javascripts' => $this->get_javascripts()
         );
+      if($this->session->userdata('logged_in'))
+      {
+       $session_data = $this->session->userdata('logged_in');
+       $data['event_registered'] = $this->registration->get_events_registered($session_data['id']);
+      }
       $data['event'] = $this->event->get_full_event($id);
       $this->load->library('googlemaps');
       $config['apikey'] = 'AIzaSyDAlpwQTVFTeyESt8wUFqhp-DaeFMTxhV8';

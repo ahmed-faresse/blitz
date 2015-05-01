@@ -17,14 +17,14 @@
   <div class="row form-group">
     <div class="col-md-12">
       <label for="title">Title</label>
-      <input name="title" id="title" type="text" class="" autofocus value="<?php echo $title ;?>">
+      <input name="title" id="title" type="text" class="" value="<?php echo $title ;?>">
     </div>
   </div>
    <div class="row margin">
     <div class="col-md-12">
     <label for="price">Price</label>
       <p>$<?php echo "$event->price_funded";?> /
-      <input name="price" id="price" type="text" class="" autofocus value="<?php echo $price ;?>"></p>
+      <input name="price" id="price" type="text" class="" value="<?php echo $price ;?>"></p>
       <progress max=<?php echo "$price";?> value=<?php echo "$event->price_funded";?>></progress>
     </div>
   </div>
@@ -38,7 +38,7 @@
     <div class="col-md-4 col-md-offset-4 place">
       <i class="fa fa-map-marker"></i>
       <label class="sr-only" for="place">Title</label>
-      <input name="place" id="place" type="text" class="form-control" autofocus value="<?php echo $place ;?>">
+      <input name="place" id="place" type="text" class="form-control" value="<?php echo $place ;?>">
       <p id="dates"></p>
     </div>
   </div>

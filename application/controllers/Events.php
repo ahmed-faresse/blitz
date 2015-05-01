@@ -52,7 +52,8 @@ class Events extends CI_Controller{
 
   public function add_player()
   {
-    if (isset($_POST['event_id']) && $this->event->increment_user($_POST['event_id']) === true)
+    if (isset($_POST['event_id']) && $this->session->userdata('logged_in') &&
+        $this->event->increment_user($_POST['event_id']) === true)
     {
       $session_data = $this->session->userdata('logged_in');
       $this->registration->add_player_to_event($_POST['event_id'], $session_data['id']);
@@ -62,7 +63,8 @@ class Events extends CI_Controller{
 
   public function remove_player()
   {
-    if (isset($_POST['event_id']) && $this->event->decrement_user($_POST['event_id']) === true)
+    if (isset($_POST['event_id']) && $this->session->userdata('logged_in') &&
+        $this->event->decrement_user($_POST['event_id']) === true)
     {
       $session_data = $this->session->userdata('logged_in');
       $this->registration->unregister_player($_POST['event_id'], $session_data['id']);
@@ -124,6 +126,8 @@ class Events extends CI_Controller{
                 }
               }
             }
+            else
+              $str .= " <a href='". base_url() . "login' class='btn btn-default' role='button'>Login to donate/participate</a>";
             $str .= "</div>";
             $str .= "<div class='meta'><span> <i class='fa fa-clock-o'></i>  " . date('F d, Y', strtotime($event->date)) . " </div>";
             $str .= "<div> <i class='fa fa-map-marker'></i>  " . $event->place . " </div>";

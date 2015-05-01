@@ -51,6 +51,8 @@
                 }
               }
             }
+            else
+              $str .= " <a href='". base_url() . "login' class='btn btn-default' role='button'>Login to donate/participate</a>";
             $str .= "</div>";
             $str .= "<div class='meta'><span> <i class='fa fa-clock-o'></i>  " . date('F d, Y', strtotime($event->date)) . " </div>";
             $str .= "<div> <i class='fa fa-map-marker'></i>  " . $event->place . " </div>";

@@ -22,9 +22,10 @@
 	text-align: justify;
 }
 
-.fa-map-marker, .fa-clock-o, .fa-calendar
+.fa
 {
 	font-size: 4em;
+	margin-bottom: 10px;
 }
 
 #map_canvas
@@ -43,9 +44,22 @@ h4
 	margin: 0;
 }
 
-.fa-users
+.fa-users, .fa-usd, .fa-plus-circle, .fa-minus-circle, .fa-sign-in, .fa-refresh
 {
-	font-size: 0.8em;
+	font-size: 1em;
+}
+
+
+.row a
+{
+	width: 100%;
+}
+
+.btn-group a
+{
+	font-size: 1.5em;
+	font-weight: bold;
+	color: #1C1D1F;
 }
 
 progress {
