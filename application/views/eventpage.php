@@ -7,6 +7,7 @@
   <div class="row">
     <div class="col-md-12">
       <h1><?php echo $event->name; ?></h1>
+      <h4>( <i class="fa fa-users"></i> <?php echo $event->current_people . "/" . $event->max_people;?> )</h4>
     </div>
   </div>
    <div class="row margin">

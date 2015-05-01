@@ -20,17 +20,46 @@
             $str .= "<div class='infos'>";
             $str .= "<h3>" . $event->name . "</h3>";
             $str .= "<p>" . $event->short_description . "</p>";
-            $str .= "<div class='buttons'><a href='". base_url() . "eventpage/index/". $event->id . "' class='btn btn-primary' role='button'>View more</a> <a href='". base_url() . "donate/index/" . $event->id . "' class='btn btn-default' role='button'>Donate</a>";
-            if(isset($_SESSION['logged_in']) && $id == $event->author_id)
-              $str .= " <a href='". base_url() . "update/index/". $event->id . "' class='btn btn-success' role='button'>Update</a>";
+            $str .= "<div class='buttons'><a href='". base_url() . "eventpage/index/". $event->id . "' class='btn btn-primary' role='button'>View more</a>"; 
+            if(isset($_SESSION['logged_in']))
+            {
+              $str .= " <a href='". base_url() . "donate/index/" . $event->id . "' class='btn btn-default' role='button'>Donate</a>";
+              if ($id == $event->author_id)
+                $str .= " <a href='" . base_url() . "update/index/" . $event->id . "' class='btn btn-success' role='button'>Update</a>";
+              else
+              {
+                $has_joined = false;
+                foreach ($event_registered as $event_r):
+                 if ($event_r->event_id == $event->id)
+                  $has_joined = true;
+                endforeach;
+                if ($has_joined === false)
+                {
+                  $str .= ' <form id="join" action="events/add_player" method="post">';
+                  $str .= '<label class="sr-only" for="event_id">Join event</label>';
+                  $str .= '<input class="sr-only" type="text" name="event_id" id="event_id" value="' . $event->id . '" />';
+                  $str .= "<button type='submit' class='btn btn-primary'>Join event</button>";
+                  $str .= '</form>';
+                }
+                else
+                {
+                  $str .= ' <form id="join" action="events/remove_player" method="post">';
+                  $str .= '<label class="sr-only" for="event_id">Join event</label>';
+                  $str .= '<input class="sr-only" type="text" name="event_id" id="event_id" value="' . $event->id . '" />';
+                  $str .= "<button type='submit' class='btn btn-danger'>Unregister</button>";
+                  $str .= '</form>';
+                }
+              }
+            }
             $str .= "</div>";
             $str .= "<div class='meta'><span> <i class='fa fa-clock-o'></i>  " . date('F d, Y', strtotime($event->date)) . " </div>";
             $str .= "<div> <i class='fa fa-map-marker'></i>  " . $event->place . " </div>";
+            $str .= "<div> <i class='fa fa-users'></i>  " . $event->current_people . " / " . $event->max_people . " </div>";
             if(isset($_SESSION['logged_in']) && $id == $event->author_id)
               $str .= "<div> <i class='fa fa-user'></i>  By " . $event->username . " (You)</div>";
             else
-              $str .= "<div> <i class='fa fa-user'></i>  By " . $event->username . " </div>";
-            $str .= "<div> <i class='fa fa-usd'></i>  " . $event->price_funded . " / " . $event->price_asked . " </div>";   
+            $str .= "<div> <i class='fa fa-user'></i>  By " . $event->username . " </div>";          
+            $str .= "<div> <i class='fa fa-usd'></i>  " . $event->price_funded . " / " . $event->price_asked . " </div>";
             $str .= "<progress max=" . $event->price_asked . " value=" . $event->price_funded . "></progress>"; 
             $str .= "</div>";
             $str .= "</div>";

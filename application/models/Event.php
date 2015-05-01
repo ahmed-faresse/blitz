@@ -16,11 +16,37 @@ Class Event extends CI_Model
    $this -> db -> update('events', $data); 
  }
 
+ function increment_user($id)
+ {
+   $event = $this->get_full_event($id);
+
+   if ($event->current_people  + 1 <= $event->max_people)
+   {
+      $this -> db -> where('id', $id);
+      $this -> db -> update('events', array('current_people' => $event->current_people  + 1));
+      return true;
+   }
+   return false;
+ }
+
+ function decrement_user($id)
+ {
+   $event = $this->get_full_event($id);
+
+   if ($event->current_people  + -1 > 0)
+   {
+      $this -> db -> where('id', $id);
+      $this -> db -> update('events', array('current_people' => $event->current_people  - 1));
+      return true;
+   }
+   return false;
+ }
+
  function get_full_event($id)
  {
    if ($id != null)
    {
-      $this -> db -> select('id, name, description, short_description, place, date, price_asked, price_funded, image_path, image_large_path');
+      $this -> db -> select('*');
       $this -> db -> from('events');
       $this -> db -> where("id", $id); 
 
@@ -32,7 +58,7 @@ Class Event extends CI_Model
 
  function get_events()
  {
-   $this -> db -> select('events.id, author_id, username, name, description, place, date, short_description, price_asked, price_funded, image_path');
+   $this -> db -> select('events.id, author_id, username, name, description, place, date, short_description, price_asked, price_funded, current_people, max_people, image_path');
    $this -> db -> from('events');
    $this -> db -> join('users', 'events.author_id = users.id');
    $this -> db -> order_by("date"); 
@@ -43,7 +69,7 @@ Class Event extends CI_Model
 
  function search_events($value)
  {
-   $this -> db -> select('events.id, author_id, username, name, description, place, date, short_description, price_asked, price_funded, image_path');
+   $this -> db -> select('events.id, author_id, username, name, description, place, date, short_description, price_asked, price_funded, current_people, max_people, image_path');
    $this -> db -> from('events');
    $this -> db -> join('users', 'events.author_id = users.id');
    $this -> db -> where("image_path LIKE '%{$value}%'");
