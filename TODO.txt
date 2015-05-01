@@ -1,8 +1,6 @@
 - Messagerie event : Ahmed
 - Accès authorisé/non authorisé : Ahmed
-- ajouter create event dans events : Geoffrey
 - Validators : Geoffrey
-- Event description ajouter donate, register unregister : Geoffrey
 - Account : Ajouter liste des events inscrits (table registrations) avec lien pour unregister + ajout infos event payé : Alexis
 - Vidéo (montage trailer FIFA 15, SC2, LOL, LAN), conversion web : non assigné
 

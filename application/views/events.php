@@ -11,6 +11,19 @@
         </div>
       </div>
     	<div class='events row'>
+        <div class='col-md-4'>
+          <div class="add">
+            <div class="add-content">
+              <div id="circle"></div>
+              <p>Create an event</p>
+              <? if (isset($_SESSION['logged_in']))
+                echo '<a href="' . base_url() . 'createevents"><i class="fa fa-plus"></i></a>';
+                else
+                echo '<a href="' . base_url() . 'login"><i class="fa fa-plus"></i></a>';
+              ?>
+            </div>
+          </div>
+        </div>
           <?php
           foreach ($event_list as $event): 
             $str = "";

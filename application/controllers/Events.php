@@ -87,6 +87,20 @@ class Events extends CI_Controller{
        $data['id'] = $session_data['id'];
        $data['event_registered'] = $this->registration->get_events_registered($session_data['id']);
       }
+  
+      $str = '<div class="col-md-4">';
+      $str .= '<div class="add">';
+      $str .= '<div class="add-content">';
+      $str .= '<div id="circle"></div>';
+      $str .= '<p>Create an event</p>';
+      if(isset($_SESSION['logged_in']))
+        $str .= '<a href="' . base_url() . 'createevents"><i class="fa fa-plus"></i></a>';
+      else
+        $str .= '<a href="' . base_url() . 'login"><i class="fa fa-plus"></i></a>';
+      $str .= '</div>';
+      $str .= '</div>';
+      $str .= '</div>';
+      echo $str;
  			foreach ($data_event as $event): 
             $str = "";
             $str .= "<div class='col-md-4'>";
