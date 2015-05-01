@@ -60,5 +60,30 @@ Class Event extends CI_Model
    $this -> db -> where('id', $event_id);
    $this -> db -> update('events', array('price_funded' => $event->price_funded  + $amount));
  }
+
+ function create_event($name, $description,$short_description,$place,$date,$price_asked,$price_funded,$current_people,$max_people,$author_id,$image_path,$image_large_path){
+   $data = array(
+          'name' => $name,
+          'description' => $description,
+          'short_description' => $short_description,
+          'place' => $place,
+          'date' => date("Y-m-d H:i:s", strtotime($date)),
+          'price_asked' => $price_asked,
+          'price_funded' => $price_funded,
+          'current_people' => $current_people,
+          'max_people' => $max_people,
+          'author_id' => $author_id,
+          'image_path' => $image_path,
+          'image_large_path' => $image_large_path
+      );
+   $this -> db -> insert('events', $data);
+   if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+ }
+
+
 }
 ?>
