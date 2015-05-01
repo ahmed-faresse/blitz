@@ -21,6 +21,7 @@ class Events extends CI_Controller{
 	function __construct(){
 	  	parent::__construct();
 	  	$this->load->model('event');
+      $this->load->model('registration');
 	}
 
 
@@ -33,7 +34,8 @@ class Events extends CI_Controller{
       if($this->session->userdata('logged_in'))
       {
        $session_data = $this->session->userdata('logged_in');
-       $data['id'] = $session_data['id'];  
+       $data['id'] = $session_data['id'];
+       $data['event_registered'] = $this->registration->get_events_registered($session_data['id']);
       }
   		$data['event_list'] = $this->event->get_events();
   		$this->load->helper('assets');
@@ -48,16 +50,42 @@ class Events extends CI_Controller{
    		redirect('Events', 'refresh');
  	}
 
+  public function add_player()
+  {
+    if (isset($_POST['event_id']) && $this->event->increment_user($_POST['event_id']) === true)
+    {
+      $session_data = $this->session->userdata('logged_in');
+      $this->registration->add_player_to_event($_POST['event_id'], $session_data['id']);
+    }
+    redirect('events', 'refresh');
+  }
+
+  public function remove_player()
+  {
+    if (isset($_POST['event_id']) && $this->event->decrement_user($_POST['event_id']) === true)
+    {
+      $session_data = $this->session->userdata('logged_in');
+      $this->registration->unregister_player($_POST['event_id'], $session_data['id']);
+    }
+    redirect('events', 'refresh');
+  }
+
  	public function search_events() {
  		$datas = $this->input->post('datas');
  		if (!empty($datas))
  		{
  			$this->load->helper('assets');
  			if ($datas == "all")
- 				$data = $this->event->get_events();
+ 				$data_event = $this->event->get_events();
  			else 
- 				$data = $this->event->search_events($datas);
- 			foreach ($data as $event): 
+ 				$data_event = $this->event->search_events($datas);
+      if($this->session->userdata('logged_in'))
+      {
+       $session_data = $this->session->userdata('logged_in');
+       $data['id'] = $session_data['id'];
+       $data['event_registered'] = $this->registration->get_events_registered($session_data['id']);
+      }
+ 			foreach ($data_event as $event): 
             $str = "";
             $str .= "<div class='col-md-4'>";
             $str .= "<div class='element'>";
@@ -65,17 +93,46 @@ class Events extends CI_Controller{
             $str .= "<div class='infos'>";
             $str .= "<h3>" . $event->name . "</h3>";
             $str .= "<p>" . $event->short_description . "</p>";
-            $str .= "<div class='buttons'><a href='". base_url() . "eventpage/index/". $event->id . "' class='btn btn-primary' role='button'>View more</a> <a href='". base_url() . "donate/index/" . $event->id . "' class='btn btn-default' role='button'>Donate</a>";
-            if(isset($_SESSION['logged_in']) && $this->session->userdata('logged_in')['id'] == $event->author_id)
-              $str .= " <a href='". base_url() . "update/index/". $event->id . "' class='btn btn-success' role='button'>Update</a>";
+            $str .= "<div class='buttons'><a href='". base_url() . "eventpage/index/". $event->id . "' class='btn btn-primary' role='button'>View more</a>"; 
+            if(isset($_SESSION['logged_in']))
+            {
+              $str .= " <a href='". base_url() . "donate/index/" . $event->id . "' class='btn btn-default' role='button'>Donate</a>";
+              if ($this->session->userdata('logged_in')['id'] == $event->author_id)
+                $str .= " <a href='" . base_url() . "update/index/" . $event->id . "' class='btn btn-success' role='button'>Update</a>";
+              else
+              {
+                $has_joined = false;
+                foreach ($data['event_registered'] as $event_r):
+                 if ($event_r->event_id == $event->id)
+                  $has_joined = true;
+                endforeach;
+                if ($has_joined === false)
+                {
+                  $str .= ' <form id="join" action="events/add_player" method="post">';
+                  $str .= '<label class="sr-only" for="event_id">Join event</label>';
+                  $str .= '<input class="sr-only" type="text" name="event_id" id="event_id" value="' . $event->id . '" />';
+                  $str .= "<button type='submit' class='btn btn-primary'>Join event</button>";
+                  $str .= '</form>';
+                }
+                else
+                {
+                  $str .= ' <form id="join" action="events/remove_player" method="post">';
+                  $str .= '<label class="sr-only" for="event_id">Join event</label>';
+                  $str .= '<input class="sr-only" type="text" name="event_id" id="event_id" value="' . $event->id . '" />';
+                  $str .= "<button type='submit' class='btn btn-danger'>Unregister</button>";
+                  $str .= '</form>';
+                }
+              }
+            }
             $str .= "</div>";
             $str .= "<div class='meta'><span> <i class='fa fa-clock-o'></i>  " . date('F d, Y', strtotime($event->date)) . " </div>";
             $str .= "<div> <i class='fa fa-map-marker'></i>  " . $event->place . " </div>";
-            if(isset($_SESSION['logged_in']) &&  $this->session->userdata('logged_in')['id'] == $event->author_id)
+            $str .= "<div> <i class='fa fa-users'></i>  " . $event->current_people . " / " . $event->max_people . " </div>";
+            if(isset($_SESSION['logged_in']) && $this->session->userdata('logged_in')['id'] == $event->author_id)
               $str .= "<div> <i class='fa fa-user'></i>  By " . $event->username . " (You)</div>";
             else
-              $str .= "<div> <i class='fa fa-user'></i>  By " . $event->username . " </div>";
-            $str .= "<div> <i class='fa fa-usd'></i>  " . $event->price_funded . " / " . $event->price_asked . " </div>";   
+            $str .= "<div> <i class='fa fa-user'></i>  By " . $event->username . " </div>";          
+            $str .= "<div> <i class='fa fa-usd'></i>  " . $event->price_funded . " / " . $event->price_asked . " </div>";
             $str .= "<progress max=" . $event->price_asked . " value=" . $event->price_funded . "></progress>"; 
             $str .= "</div>";
             $str .= "</div>";
