@@ -66,26 +66,31 @@
       <?php echo $map['html']; ?>
   </div>
   <hr/>
-  <div id="comment">
+  <div class="row margin">
+  <div id="comments" class="col-md-12">
     <h2>Comments</h2>
-    <?php if (count($comments)>0){ ?>
-    <?php foreach($comments as $row){ ?>
-    <p><strong><?=$row['username']?></strong> said at <?=date('m/d/Y H:i A',strtotime($row['date_added']))?><br /><?=$row['comment']?><p>
-    <hr/>
-    <? } ?>
-
-    <? } else{ ?>
-    <p>There is currently no comment.</p>
-    <? } ?>
-    <?php echo form_open(base_url().'comments/add_comment/'.$event->id);?>
-    <?php
-    $data_form = array(
-      'name' => 'comment'
-      );
-    echo form_textarea($data_form);
+    <?
+    if (count($comments) > 0)
+    {
+      foreach($comments as $row)
+        echo "<p><strong>" . $row['username'] . "</strong> said at " . date('m/d/Y H:i A', strtotime($row['date_added'])) . "<br />" . $row['comment'] . "</p><hr/>";
+    }
+    else
+      echo '<p>There is currently no comment.</p>';
     ?>
-    <p><?php echo form_submit('','Add Comment'); ?></p>
-    <?php echo form_close();?>
+    <div class="form-group col-md-6 col-md-offset-3">
+      <? if (isset($_SESSION['logged_in']))
+      {
+        echo '<label for="comment" class="sr-only"></label>';
+        echo '<textarea name="comment" id="comment" class="form-control" rows="10"></textarea>';
+        echo '<button id="commentButton" class="btn btn-primary">Add new comment</button>';
+        echo '<p class="sr-only" id="eventID">' . $event->id . '</p>';
+      }
+      else
+        echo '<a href="'. base_url() . 'login" class="btn btn-default" role="button"><i class="fa fa-sign-in"></i> Login to comment</a>';
+      ?>
+    </div>
+  </div>
   </div>
 </div>
 

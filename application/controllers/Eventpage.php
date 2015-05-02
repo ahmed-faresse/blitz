@@ -12,6 +12,7 @@ class Eventpage extends CI_Controller{
     array('jquery-1.10.2', 0),
     array('bootstrap', 0),
     array('ct-navbar', 0),
+    array('eventpage', 0),
     array('https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js', 1)
    );
 
@@ -21,6 +22,40 @@ class Eventpage extends CI_Controller{
       $this->load->model('registration');
       $this->load->model('comment');
 	}
+
+  public function add_comment(){
+    $comment = $this->input->post('comment');
+    $id = $this->input->post('id');
+
+    $data=array(
+      'postID'=>$id,
+      'userID'=>$this->session->userdata('logged_in')['id'],
+      'comment'=>$comment
+      );
+    $this->comment->add_comment($data);
+    $comments = $this->comment->get_comments($id);
+
+    $str = '<h2>Comments</h2>';
+    if (count($comments) > 0)
+    {
+      foreach($comments as $row)
+        $str .= "<p><strong>" . $row['username'] . "</strong> said at " . date('m/d/Y H:i A', strtotime($row['date_added'])) . "<br />" . $row['comment'] . "</p><hr/>";
+    }
+    else
+      $str .= '<p>There is currently no comment.</p>';
+    $str .= '<div class="form-group col-md-6 col-md-offset-3">';
+    if (isset($_SESSION['logged_in']))
+    {
+      $str .= '<label for="comment" class="sr-only"></label>';
+      $str .= '<textarea name="comment" id="comment" class="form-control" rows="10"></textarea>';
+      $str .= '<button id="commentButton" class="btn btn-primary">Add new comment</button>';
+      $str .= '<p class="sr-only" id="eventID">' . $id . '</p>';
+    }
+    else
+      $str .= '<a href="'. base_url() . 'login" class="btn btn-default" role="button"><i class="fa fa-sign-in"></i> Login to comment</a>';
+    $str .= '</div>';
+    echo $str;
+  }
 
   public function add_player($id)
   {
