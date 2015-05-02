@@ -19,6 +19,7 @@ class Eventpage extends CI_Controller{
 	  	parent::__construct();
 	  	$this->load->model('event');
       $this->load->model('registration');
+      $this->load->model('comment');
 	}
 
   public function add_player($id)
@@ -64,6 +65,8 @@ class Eventpage extends CI_Controller{
       $marker['title'] = $data['event']->place;
       $this->googlemaps->add_marker($marker);
       $data['map'] = $this->googlemaps->create_map();
+      //Comment area
+      $data['comments'] = $this->comment->get_comments($id);
   		$this->load->helper('assets');
       $this->load->view('templates/header', $header);
   		$this->load->view('eventpage', $data);

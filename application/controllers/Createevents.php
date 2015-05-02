@@ -26,10 +26,11 @@ class Createevents extends CI_Controller{
 
 	function __construct(){
 	  	parent::__construct();
-	  	$this->load->model('event');
+  	  	$this->load->model('event');
 	}
 
   function index(){
+  if ($this->session->userdata('logged_in')){
       $header = array(
           'title' => 'Blitz - Create Event',
           'stylesheets' => $this->get_stylesheets(),
@@ -39,7 +40,10 @@ class Createevents extends CI_Controller{
       $this->load->view('templates/header', $header);
       $this->load->view('createevent_view');
       $this->load->view('templates/footer');
-	}
+	}else
+      header("HTTP/1.1 403 Unauthorized" );
+
+  }
 
   	function logout($id) {
   		$this->session->unset_userdata('logged_in');

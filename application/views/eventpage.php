@@ -65,6 +65,28 @@
   <div class="row margin">
       <?php echo $map['html']; ?>
   </div>
+  <hr/>
+  <div id="comment">
+    <h2>Comments</h2>
+    <?php if (count($comments)>0){ ?>
+    <?php foreach($comments as $row){ ?>
+    <p><strong><?=$row['username']?></strong> said at <?=date('m/d/Y H:i A',strtotime($row['date_added']))?><br /><?=$row['comment']?><p>
+    <hr/>
+    <? } ?>
+
+    <? } else{ ?>
+    <p>There is currently no comment.</p>
+    <? } ?>
+    <?php echo form_open(base_url().'comments/add_comment/'.$event->id);?>
+    <?php
+    $data_form = array(
+      'name' => 'comment'
+      );
+    echo form_textarea($data_form);
+    ?>
+    <p><?php echo form_submit('','Add Comment'); ?></p>
+    <?php echo form_close();?>
+  </div>
 </div>
 
 <?php echo $map['js']; ?>
