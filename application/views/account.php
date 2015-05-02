@@ -35,20 +35,20 @@
         <div class="collapse" id="collapsePassword">
             <div class="well">
                 <?php echo form_open('account', array('class' => 'form-contact')); ?>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input name="password" id="password" type="password" class="form-control " placeholder="Enter your password" autofocus>
-                    </div>
-                    <br />
-                    <div class="form-group">
-                        <label for="newpassword">New password</label>
-                        <input name="newpassword" id="newpassword" type="password" class="form-control " placeholder="Enter your new password">
-                    </div>
-                    <div class="form-group">
-                        <label for="confirmnewpassword">Confirm your new password</label>
-                        <input name="confirmnewpassword" id="confirmnewpassword" type="password" class="form-control " placeholder="Confirm your new password">
-                    </div>
-                    <button class="btn btn-block btn-save" type="submit">Save</button>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input name="password" id="password" type="password" class="form-control " placeholder="Enter your password" autofocus>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="newpassword">New password</label>
+                    <input name="newpassword" id="newpassword" type="password" class="form-control " placeholder="Enter your new password">
+                </div>
+                <div class="form-group">
+                    <label for="confirmnewpassword">Confirm your new password</label>
+                    <input name="confirmnewpassword" id="confirmnewpassword" type="password" class="form-control " placeholder="Confirm your new password">
+                </div>
+                <button class="btn btn-block btn-save" type="submit">Save</button>
                 </form>
             </div>
         </div>
@@ -71,27 +71,29 @@
                             <th>Event date</th>
                             <th>Event description</th>
                         </tr>
-                        <?php foreach($transactions as $transaction) { ?>
-                            <?php foreach($eventTransactions as $event) { ?>
-                                <tr>
-                                    <td>
-                                        <?php echo $transaction->date ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $transaction->amount ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $event->name ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $event->date ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $event->short_description ?>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        <?php } ?>
+                        <?php
+                        $i = 0;
+                        foreach($transactions as $transaction) { ?>
+                            <tr>
+                                <td>
+                                    <?php echo $transaction->date ?>
+                                </td>
+                                <td>
+                                    <?php echo $transaction->amount ?>
+                                </td>
+                                <td>
+                                    <?php echo $eventTransactions[$i]->name ?>
+                                </td>
+                                <td>
+                                    <?php echo $eventTransactions[$i]->date ?>
+                                </td>
+                                <td>
+                                    <?php echo $eventTransactions[$i]->short_description ?>
+                                </td>
+                            </tr>
+                            <?php
+                            $i++;
+                        } ?>
                     </table>
                 <?php }
                 else { ?>
@@ -118,25 +120,29 @@
                             <th>Event description</th>
                             <th></th>
                         </tr>
-                        <?php foreach($registrations as $registration) { ?>
+                        <?php
+                        $i = 0;
+                        foreach($registrations as $registration) { ?>
                             <tr>
                                 <td>
                                     <?php echo $registration->date ?>
                                 </td>
                                 <td>
-                                    <?php echo $event->name ?>
+                                    <?php echo $eventRegistrations[$i]->name ?>
                                 </td>
                                 <td>
-                                    <?php echo $event->date ?>
+                                    <?php echo $eventRegistrations[$i]->date ?>
                                 </td>
                                 <td>
-                                    <?php echo $event->short_description ?>
+                                    <?php echo $eventRegistrations[$i]->short_description ?>
                                 </td>
                                 <td>
-                                    <a href="<?php echo base_url() ?>account/remove_player/<?php echo $registration->event_id ?>" class="btn btn-danger" role="button"><i class="fa fa-minus-circle"></i> Unregister</a>
+                                    <a href="<?php echo base_url() ?>account/remove_player/<?php echo $eventRegistrations[$i]->id ?>" class="btn btn-danger" role="button"><i class="fa fa-minus-circle"></i> Unregister</a>
                                 </td>
                             </tr>
-                        <?php } ?>
+                            <?php
+                            $i++;
+                        } ?>
                     </table>
                 <?php }
                 else { ?>
