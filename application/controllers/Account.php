@@ -22,9 +22,14 @@ class Account extends CI_Controller {
         parent::__construct();
         $this->load->model('user');
         $this->load->model('transaction');
+        $this->load->model('registration');
+        $this->load->model('event');
     }
 
     function index(){
+
+        $this->load->helper('assets');
+        $this->load->library('form_validation');
 
         $header = array(
             'title' => 'Blitz - My Account',
@@ -35,13 +40,46 @@ class Account extends CI_Controller {
         $data['success'] = false;
         $data['userInformation'] = false;
         $data['transactions'] = false;
+        $data['eventTransactions'] = false;
+        $data['registrations'] = false;
+        $data['eventRegistrations'] = false;
+
 
         if($this->session->userdata('logged_in'))
         {
             $session_data = $this->session->userdata('logged_in');
+
+            $this->form_validation->set_rules('password', 'password','trim|xss_clean|required|callback_check_database',
+                array('required' => 'Your %s is not valid. Please verify and try again.'));
+            $this->form_validation->set_rules('newpassword', 'new password','trim|xss_clean|required',
+                array('required' => 'Your %s is empty. Please enter a new password.'));
+            $this->form_validation->set_rules('confirmnewpassword', 'confirmation of new password','trim|xss_clean|required|callback_isConfirmPasswordCorrect',
+                array('required' => 'Your %s is empty. Please confirm your password.'));
+
+            if ($this->form_validation->run() == TRUE)
+            {
+                $data['success'] = true;
+                $this->user->changePassword($session_data['id'], MD5($this->input->post('newpassword')));
+            }
+
             $user = $this->user->getUserInformation($session_data['username']);
             $data['userInformation'] = $user[0];
-            $data['transactions'] = $this->transaction->getTransactions($session_data['id'], 10);
+
+            $transactions = $this->transaction->getTransactions($session_data['id'], 10);
+            $i = 0;
+            foreach($transactions as $transaction) {
+                $data["eventTransactions"][$i] = $this->event->get_full_event($transaction->event_id);
+                $i++;
+            }
+            $data['transactions'] = $transactions;
+
+            $registrations = $this->registration->get_events_registered($session_data['id']);
+            $i = 0;
+            foreach($registrations as $registration) {
+                $data["eventRegistrations"][$i] = $this->event->get_full_event($registration->event_id);
+                $i++;
+            }
+            $data['registrations'] = $registrations;
         }
 
         $this->load->helper('assets');
@@ -54,6 +92,52 @@ class Account extends CI_Controller {
         $this->session->unset_userdata('logged_in');
         session_destroy();
         redirect('Account', 'refresh');
+    }
+
+    public function remove_player($id)
+    {
+        if ($this->session->userdata('logged_in'))
+        {
+            $session_data = $this->session->userdata('logged_in');
+            $this->registration->unregister_player($id, $session_data['id']);
+        }
+        redirect('account', 'refresh');
+    }
+
+    function check_database($password)
+    {
+        if($this->session->userdata('logged_in'))
+        {
+            $session_data = $this->session->userdata('logged_in');
+
+            if ($this->isPasswordCorrect($session_data['username'], $password) == false) {
+                $this->form_validation->set_message('check_database','Your password is incorrect.');
+                return false;
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private function isPasswordCorrect($username, $password)
+    {
+        $this->db->where('username', $username);
+        $this->db->where('password', MD5($password));
+        $query = $this->db->get('users');
+
+        if( $query->num_rows() > 0 ){ return TRUE; } else { return FALSE; }
+    }
+
+    function isConfirmPasswordCorrect($password)
+    {
+        if ($password != $this->input->post('newpassword')) {
+            $this->form_validation->set_message('isConfirmPasswordCorrect','Your confirmation for your new password is not the same than your new password.');
+            return false;
+        }
+
+        return true;
     }
 
     protected function get_stylesheets() {

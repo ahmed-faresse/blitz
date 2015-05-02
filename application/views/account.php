@@ -34,7 +34,7 @@
 
         <div class="collapse" id="collapsePassword">
             <div class="well">
-                <?php echo form_open('changepassword', array('class' => 'form-contact')); ?>
+                <?php echo form_open('account', array('class' => 'form-contact')); ?>
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input name="password" id="password" type="password" class="form-control " placeholder="Enter your password" autofocus>
@@ -56,35 +56,93 @@
 
     <br />
     <br />
-    <?php if ($transactions != false) { ?>
-        <div class="row">
-            <div class="panel">
-                <div class="panel-heading panel-heading-account">
-                    <h2 class="panel-title text-center">Historic of my transactions</h2>
-                </div>
-                <div class="panel-body">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-heading panel-heading-account">
+                <h2 class="panel-title text-center">Historic of my transactions</h2>
+            </div>
+            <div class="panel-body">
+                <?php if ($transactions != false) { ?>
                     <table class="table table-bordered">
                         <tr>
-                            <th>Date of the transaction</th>
-                            <th>Amount</th>
+                            <th>Transaction date</th>
+                            <th>Transaction amount</th>
+                            <th>Event name</th>
+                            <th>Event date</th>
+                            <th>Event description</th>
                         </tr>
                         <?php foreach($transactions as $transaction) { ?>
+                            <?php foreach($eventTransactions as $event) { ?>
+                                <tr>
+                                    <td>
+                                        <?php echo $transaction->date ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $transaction->amount ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $event->name ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $event->date ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $event->short_description ?>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        <?php } ?>
+                    </table>
+                <?php }
+                else { ?>
+                    <p>You don't have transactions.</p>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div class="row">
+        <div class="panel">
+            <div class="panel-heading panel-heading-account">
+                <h2 class="panel-title text-center">My events</h2>
+            </div>
+            <div class="panel-body">
+                <?php if ($registrations != false) { ?>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Registration date</th>
+                            <th>Event name</th>
+                            <th>Event date</th>
+                            <th>Event description</th>
+                            <th></th>
+                        </tr>
+                        <?php foreach($registrations as $registration) { ?>
                             <tr>
                                 <td>
-                                    <?php echo $transaction->date ?>
+                                    <?php echo $registration->date ?>
                                 </td>
                                 <td>
-                                    <?php echo $transaction->amount ?>
+                                    <?php echo $event->name ?>
+                                </td>
+                                <td>
+                                    <?php echo $event->date ?>
+                                </td>
+                                <td>
+                                    <?php echo $event->short_description ?>
+                                </td>
+                                <td>
+                                    <a href="<?php echo base_url() ?>account/remove_player/<?php echo $registration->event_id ?>" class="btn btn-danger" role="button"><i class="fa fa-minus-circle"></i> Unregister</a>
                                 </td>
                             </tr>
                         <?php } ?>
                     </table>
-                </div>
+                <?php }
+                else { ?>
+                    <p>You are not register to any event.</p>
+                <?php } ?>
             </div>
         </div>
-    <?php }
-    else { ?>
-        <p>No transactions.</p>
-    <?php } ?>
-
+    </div>
 </div>
