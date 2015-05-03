@@ -28,7 +28,7 @@ if (!function_exists('img_url')){
 
 if (!function_exists('img')){
 	function img($nom, $class='', $alt=''){
-		return '<img src="' . img_url($nom) . '" class="' . $class . '" "alt="' . $alt .  '"/>';
+		return '<img src="' . img_url($nom) . '" class="' . $class . '" alt="' . $alt .  '"/>';
 	}
 }
 
