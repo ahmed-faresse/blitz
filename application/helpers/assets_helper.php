@@ -34,7 +34,7 @@ if (!function_exists('img')){
 
 if (!function_exists('video_url')){
 	function video_url($id,$src,$type){
-		return '<video autoplay loop id="' . $id . '" <source src="' . base_url() . 'assets/video/' . $src .'" type="' . $type . '"></video><div class="lecture"><em class="glyphicon glyphicon-pause"></em></div><div class="sound"><em class="glyphicon glyphicon-volume-up"></em></div>';
+		return '<video autoplay loop id="' . $id . '"><source src="' . base_url() . 'assets/video/' . $src .'" type="' . $type . '"></video><div class="lecture"><em class="glyphicon glyphicon-pause"></em></div><div class="sound"><em class="glyphicon glyphicon-volume-up"></em></div>';
 	}
 }
 ?>
