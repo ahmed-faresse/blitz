@@ -31,4 +31,10 @@ if (!function_exists('img')){
 		return '<img src="' . img_url($nom) . '" class="' . $class . '" "alt="' . $alt .  '"/>';
 	}
 }
+
+if (!function_exists('video_url')){
+	function video_url($poster, $id,$src,$type){
+		return '<video autoplay loop poster="' . base_url() . 'assets/images/' . $poster . '" id="' . $id . '" <source src="' . base_url() . 'assets/video/' . $src .'" type="' . $type . '"></video>';
+	}
+}
 ?>

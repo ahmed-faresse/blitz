@@ -1,5 +1,5 @@
  <div class="blurred-container">
-            <div class="img-src" style="background-image: url('<?php echo img_url('bg.png')?>')"></div>
+<?php  echo video_url('bg.png','video','blitz.mp4','video/mp4');?>
 </div>
  <div class="main">
         <?php
