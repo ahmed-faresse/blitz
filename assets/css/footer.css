@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'SoftElegance';
+  src: url('../fonts/Soft Elegance.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 #footer
 {
 	width: 100%;
@@ -8,9 +15,42 @@
 
 #footer img
 {
+	margin : 0 auto;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#footer .achecker p
+{
+	font-family: 'SoftElegance';
+	font-size: 0.7em;
+	font-weight: bold;
+	padding-bottom: 0;
+	margin-bottom: 0;
+	text-align: center;
+	text-decoration: none;
+	color: white;
+}
+
+#footer .achecker
+{
+	padding-top: 0;
+	margin-top: -3px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.center-footer
+{
 	display: block;
 	margin : 0 auto;
 	text-align: center;
+}
+
+#footer em
+{
+	font-size: 3.5em;
+	margin-top: -4px;
 }
 
 #full
