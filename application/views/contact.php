@@ -27,7 +27,7 @@
             </div>
             <div class="form-group">
                 <label for="message">Message</label>
-                <textarea name="message" id="message" type="text" class="form-control" placeholder="Enter your message" rows="10"><?php echo $message ?></textarea>
+                <textarea name="message" id="message" class="form-control" placeholder="Enter your message" rows="10"><?php echo $message ?></textarea>
             </div>
             <button class="btn btn-block bt-login" type="submit">Send</button>
         </form>

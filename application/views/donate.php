@@ -32,8 +32,8 @@
 	                </label>
                 </div>
                 <div class="col-md-3">
-	                <label for="Visa Electron">
-	                <input name="cardType" id="Visa Electron" type="radio" value="Visa electron"/>
+	                <label for="VisaElectron">
+	                <input name="cardType" id="VisaElectron" type="radio" value="Visa electron"/>
 	                <?php echo img("visaelectron.jpg", "", "visa electron");?>
 	                </label>
                 </div>

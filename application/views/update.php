@@ -31,7 +31,7 @@
   <div class="row margin">
     <div class="col-md-10 col-md-offset-1">
       <label for="description">Description</label>
-      <textarea name="description" id="description" type="text" class="form-control" rows="10"><?php echo $description ?></textarea>
+      <textarea name="description" id="description" class="form-control" rows="10"><?php echo $description ?></textarea>
     </div>
   </div>
   <div class="row margin">
