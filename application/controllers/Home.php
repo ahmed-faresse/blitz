@@ -13,6 +13,7 @@ class Home extends CI_Controller {
     array('jquery-1.10.2', 0),
     array('bootstrap', 0),
     array('ct-navbar', 0),
+    array('home', 0),
     array('https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js', 1)
    );
 

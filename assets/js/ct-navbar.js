@@ -30,15 +30,12 @@ $(document).ready(function(){
 $(document).scroll(function() {
    if(hasTransparent){
         if( $(this).scrollTop() > 260 ) {
-            console.log("ho");
             if(transparent) {
                 transparent = false;
                 $('nav[role="navigation"]').removeClass('navbar-transparent');
             }
         } else {
             if( !transparent ) {
-                            console.log("hey");
-
                 transparent = true;
                 $('nav[role="navigation"]').addClass('navbar-transparent');
             }
