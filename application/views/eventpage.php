@@ -73,7 +73,15 @@
     if (count($comments) > 0)
     {
       foreach($comments as $row)
-        echo "<p><strong>" . $row['username'] . "</strong> said at " . date('m/d/Y H:i A', strtotime($row['date_added'])) . "<br />" . $row['comment'] . "</p><hr/>";
+      {
+        $name = $row['username'];
+        if ($row['userID'] == $_SESSION['logged_in']['id'])
+          $name = $name . " (you)";
+        else if ($event->author_id == $row['userID'])
+          $name = $name . " (Organizer of this event)";
+
+        echo "<p><strong>" . $name . "</strong> said at " . date('F d, Y h:i A', strtotime($row['date_added'])) . "<br />" . $row['comment'] . "</p><hr/>";
+      }
     }
     else
       echo '<p>There is currently no comment.</p>';

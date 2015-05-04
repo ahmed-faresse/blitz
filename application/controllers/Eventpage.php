@@ -27,6 +27,7 @@ class Eventpage extends CI_Controller{
     $comment = $this->input->post('comment');
     $id = $this->input->post('id');
 
+    $event = $this->event->get_full_event($id);
     $data=array(
       'postID'=>$id,
       'userID'=>$this->session->userdata('logged_in')['id'],
@@ -39,7 +40,15 @@ class Eventpage extends CI_Controller{
     if (count($comments) > 0)
     {
       foreach($comments as $row)
-        $str .= "<p><strong>" . $row['username'] . "</strong> said at " . date('m/d/Y H:i A', strtotime($row['date_added'])) . "<br />" . $row['comment'] . "</p><hr/>";
+      {
+        $name = $row['username'];
+        if ($row['userID'] == $_SESSION['logged_in']['id'])
+          $name = $name . " (you)";
+        else if ($event->author_id == $row['userID'])
+          $name = $name . " (Organizer of this event)";
+
+        $str .= "<p><strong>" . $name . "</strong> said at " . date('F d, Y h:i A', strtotime($row['date_added'])) . "<br />" . $row['comment'] . "</p><hr/>";
+      }
     }
     else
       $str .= '<p>There is currently no comment.</p>';

@@ -1,7 +1,7 @@
 $(document).ready(function(){
   var base_url = window.location.origin;
 
-  $('#commentButton').click(function(){
+  $('#comments').on("click", "#commentButton", function(){
     var comment = $('#comment').val();
     var id = $('#eventID').text();
     
