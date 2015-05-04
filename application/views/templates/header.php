@@ -43,7 +43,7 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li>
                                     <a href="<?php echo site_url() . 'events' ?>">
-                                        <i class="pe-7s-note2"></i>
+                                        <em class="pe-7s-note2"></em>
                                         <p>Events</p>
                                     </a>
                                 </li>
@@ -51,26 +51,26 @@
                                     <?php if(isset($_SESSION['logged_in']))
                                     {
                                         echo '<a href="'. site_url() . 'account/">
-                                            <i class="pe-7s-user"></i>
+                                            <em class="pe-7s-user"></em>
                                             <p>Account</p>
                                         </a>                              
                                 </li>
                                 <li>
                                     <a href="'. site_url() . 'home/logout/">
-                                        <i class="pe-7s-power"></i>
+                                        <em class="pe-7s-power"></em>
                                         <p>Log out</p>
                                     </a>';
                                 }
                                 else
                                 {
                                     echo '<a href="'. site_url() . 'login">
-                                    <i class="pe-7s-key"></i>
+                                    <em class="pe-7s-key"></em>
                                     <p>Log in</p>
                                     </a>
                                     </li>
                                     <li>
                                     <a href="register">
-                                        <i class="pe-7s-add-user"></i>
+                                        <em class="pe-7s-add-user"></em>
                                         <p>Register</p>
                                     </a>';
                                 }
@@ -78,7 +78,7 @@
                              </li>
                              <li>
                                 <a href= <? echo site_url() . "contact";?>>
-                                    <i class="pe-7s-mail"></i>
+                                    <em class="pe-7s-mail"></em>
                                     <p>Contact</p>
                                 </a>
                              </li>

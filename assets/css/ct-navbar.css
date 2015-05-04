@@ -23,10 +23,10 @@ body{
 }
 /*     General overwrite     */
 a{
-    color: #2C93FF;
+    color: #000000;
 }
 a:hover, a:focus {
-    color: #1084FF;
+    color: #0B6BD0;
 }
 a:focus, a:active, 
 button::-moz-focus-inner,
@@ -475,7 +475,7 @@ h1 .subtitle{
     background-repeat:no-repeat;
     background-size:cover;
     background-position: center center;
-    background-image: url('assets/images/bg.jpg')
+    background-image: url('assets/images/bg.jpg');
 }
 
 .blurred-container > #video{

@@ -17,9 +17,9 @@
               <div id="circle"></div>
               <p>Create an event</p>
               <? if (isset($_SESSION['logged_in']))
-                echo '<a href="' . base_url() . 'createevents"><i class="fa fa-plus"></i></a>';
+                echo '<a href="' . base_url() . 'createevents"><em class="fa fa-plus"></em></a>';
                 else
-                echo '<a href="' . base_url() . 'login"><i class="fa fa-plus"></i></a>';
+                echo '<a href="' . base_url() . 'login"><em class="fa fa-plus"></em></a>';
               ?>
             </div>
           </div>
@@ -67,14 +67,14 @@
             else
               $str .= " <a href='". base_url() . "login' class='btn btn-default' role='button'>Login to donate/participate</a>";
             $str .= "</div>";
-            $str .= "<div class='meta'><span> <i class='fa fa-clock-o'></i>  " . date('F d, Y', strtotime($event->date)) . " </span></div>";
-            $str .= "<div> <i class='fa fa-map-marker'></i>  " . $event->place . " </div>";
-            $str .= "<div> <i class='fa fa-users'></i>  " . $event->current_people . " / " . $event->max_people . " </div>";
+            $str .= "<div class='meta'><span> <em class='fa fa-clock-o'></em>  " . date('F d, Y', strtotime($event->date)) . " </span></div>";
+            $str .= "<div> <em class='fa fa-map-marker'></em>  " . $event->place . " </div>";
+            $str .= "<div> <em class='fa fa-users'></em>  " . $event->current_people . " / " . $event->max_people . " </div>";
             if(isset($_SESSION['logged_in']) && $id == $event->author_id)
-              $str .= "<div> <i class='fa fa-user'></i>  By " . $event->username . " (You)</div>";
+              $str .= "<div> <em class='fa fa-user'></em>  By " . $event->username . " (You)</div>";
             else
-            $str .= "<div> <i class='fa fa-user'></i>  By " . $event->username . " </div>";          
-            $str .= "<div> <i class='fa fa-usd'></i>  " . $event->price_funded . " / " . $event->price_asked . " </div>";
+            $str .= "<div> <em class='fa fa-user'></em>  By " . $event->username . " </div>";          
+            $str .= "<div> <em class='fa fa-usd'></em>  " . $event->price_funded . " / " . $event->price_asked . " </div>";
             $str .= "<progress max=" . $event->price_asked . " value=" . $event->price_funded . "></progress>"; 
             $str .= "</div>";
             $str .= "</div>";

@@ -36,7 +36,7 @@
   </div>
   <div class="row margin">
     <div class="col-md-4 col-md-offset-4 place">
-      <i class="fa fa-map-marker"></i>
+      <em class="fa fa-map-marker"></em>
       <label class="sr-only" for="place">Title</label>
       <input name="place" id="place" type="text" class="form-control" value="<?php echo $place ;?>">
       <p id="dates"></p>
@@ -44,12 +44,12 @@
   </div>
   <div class="row margin">
     <div class="col-md-3 col-md-offset-2 date">
-      <i class="fa fa-calendar"></i>
+      <em class="fa fa-calendar"></em>
       <label class="sr-only" for="date">Date</label>
       <input name="date" id="date" type="text" class="form-control" value="<?php echo $date ; ?>">
     </div>
     <div class="col-md-3 col-md-offset-2 date">
-      <i class="fa fa-clock-o"></i>
+      <em class="fa fa-clock-o"></em>
       <label class="sr-only" for="time">Time</label>
       <input name="time" id="time" type="text" class="form-control" value="<?php echo $time ; ?>">
     </div>

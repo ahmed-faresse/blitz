@@ -33,7 +33,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="thumbnail-icon">
-                  <i class="fa fa-5x fa-gamepad "></i>
+                  <em class="fa fa-5x fa-gamepad "></em>
                 </div>
                 <div class="thumbnail-title">
                   Play
@@ -45,7 +45,7 @@
 
             <div class="col-md-8 col-md-offset-2">
                 <div class="thumbnail-icon right">
-                  <i class="fa fa-5x fa-wrench "></i>
+                  <em class="fa fa-5x fa-wrench "></em>
                 </div>
                 <div class="thumbnail-title text-right">
                   Organize
@@ -57,7 +57,7 @@
 
             <div class="col-md-8 col-md-offset-2">
                 <div class="thumbnail-icon">
-                  <i class="fa fa-5x fa-money "></i>
+                  <em class="fa fa-5x fa-money "></em>
                 </div>
                 <div class="thumbnail-title">
                   Fund

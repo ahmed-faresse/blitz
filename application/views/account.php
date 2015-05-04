@@ -133,7 +133,7 @@
                                     <?php echo $eventRegistrations[$i]->short_description ?>
                                 </td>
                                 <td>
-                                    <a href="<?php echo base_url() ?>account/remove_player/<?php echo $eventRegistrations[$i]->id ?>" class="btn btn-danger" role="button"><i class="fa fa-minus-circle"></i> Unregister</a>
+                                    <a href="<?php echo base_url() ?>account/remove_player/<?php echo $eventRegistrations[$i]->id ?>" class="btn btn-danger" role="button"><em class="fa fa-minus-circle"></em> Unregister</a>
                                 </td>
                             </tr>
                             <?php
@@ -180,7 +180,7 @@
                                     <?php echo $event->current_people ?>
                                 </td>
                                 <td>
-                                    <a href="<?php echo base_url() ?>account/remove_event/<?php echo $event->id ?>" class="btn btn-danger" role="button"><i class="fa fa-minus-circle"></i> Cancel event</a>
+                                    <a href="<?php echo base_url() ?>account/remove_event/<?php echo $event->id ?>" class="btn btn-danger" role="button"><em class="fa fa-minus-circle"></em> Cancel event</a>
                                 </td>
                             </tr>
                             <?php
