@@ -79,7 +79,7 @@
       </div>
   </div>
 
-  <div class="row margin">
+  <div class="row margin ctrevent">
     <div class="col-md-4 col-md-offset-4">
       <button class="btn btn-block btn-info" type="submit">Create the event</button>
     </div>
