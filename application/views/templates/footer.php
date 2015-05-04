@@ -1,6 +1,6 @@
 	<? if (strcmp($this->router->fetch_class(), "home") === 0)
                 echo '</div>' ;?> 
-    <div id="footer" class="container">
+    <div class="footer" class="container">
     		<div class="row">
     			<div class="col-md-2 col-md-offset-5">
                     <div class="center-footer">
