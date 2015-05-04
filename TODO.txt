@@ -1,4 +1,0 @@
-- (you) pour les commentaires
-- commantaire: date format
-- nom createur event + couleur différente
-- account / contact design

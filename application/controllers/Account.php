@@ -15,6 +15,7 @@ class Account extends CI_Controller {
         array('jquery-1.10.2', 0),
         array('bootstrap', 0),
         array('ct-navbar', 0),
+        array('account', 0),
         array('https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js', 1)
     );
 
@@ -67,17 +68,25 @@ class Account extends CI_Controller {
 
             $transactions = $this->transaction->getTransactions($session_data['id'], 10);
             $i = 0;
-            foreach($transactions as $transaction) {
-                $data["eventTransactions"][$i] = $this->event->get_full_event($transaction->event_id);
-                $i++;
+            if ($transactions != null)
+            {
+                foreach($transactions as $transaction)
+                {
+                    $data["eventTransactions"][$i] = $this->event->get_full_event($transaction->event_id);
+                    $i++;
+                }
+                $data['transactions'] = $transactions;
             }
-            $data['transactions'] = $transactions;
 
             $registrations = $this->registration->get_events_registered($session_data['id']);
             $i = 0;
-            foreach($registrations as $registration) {
-                $data["eventRegistrations"][$i] = $this->event->get_full_event($registration->event_id);
-                $i++;
+            if ($registrations != null)
+            {
+                foreach($registrations as $registration)
+                {
+                    $data["eventRegistrations"][$i] = $this->event->get_full_event($registration->event_id);
+                    $i++;
+                }
             }
             $data['authorEvent'] = $this->event->get_authored_event($session_data['id']);
             $data['registrations'] = $registrations;

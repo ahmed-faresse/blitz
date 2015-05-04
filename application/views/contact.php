@@ -1,4 +1,5 @@
- <div class="container contact">
+<div class="bg"> 
+<div class="container contact">
     <h1 class="text-center">Contact us</h1>
     <br />
 
@@ -22,14 +23,15 @@
         <?php echo form_open('verifycontact', array('class' => 'form-contact')); ?>
 
             <div class="form-group">
-                <label for="email">Email</label>
+                <label class="sr-only" for="email">Email</label>
                 <input name="email" id="email" type="text" class="form-control" placeholder="Enter your email" autofocus value="<?php echo $email ?>">
             </div>
             <div class="form-group">
-                <label for="message">Message</label>
+                <label class="sr-only" for="message">Message</label>
                 <textarea name="message" id="message" class="form-control" placeholder="Enter your message" rows="10"><?php echo $message ?></textarea>
             </div>
             <button class="btn btn-block bt-login" type="submit">Send</button>
         </form>
     </div>
+</div>
 </div>

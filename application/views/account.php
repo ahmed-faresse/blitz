@@ -1,6 +1,8 @@
 <div class="container account">
-    <h1 class="text-center">My account</h1>
-    <br />
+    <div class="account-head">
+        <em class="fa fa-user"></em>
+        <h1 class="text-center">My account</h1>
+    </div>
 
     <?php if (validation_errors() != '') { ?>
         <div class="row">
@@ -18,21 +20,18 @@
         </div>
     <?php } ?>
 
+    <div class="row headings">
+            <h3 class="title">Username: <strong><?php echo $userInformation->username ?></strong></h3>
+            <h3 class="title">Email address: <strong><?php echo $userInformation->email ?></strong></h3>
+    </div>
+
     <div class="row">
         <div class="panel">
-            <div class="panel-heading panel-heading-account">
-                <h2 class="panel-title text-center"><strong><?php echo $userInformation->username ?></strong></h2>
-            </div>
-            <div class="panel-body-account">
-                <p>Your email address is <strong><?php echo $userInformation->email ?></strong></p>
-            </div>
+        <div class="panel-heading panel-heading-account">
+                <h2>Change my password</h2>
         </div>
 
-        <button class="btn btn-block btn-login" type="button" data-toggle="collapse" data-target="#collapsePassword" aria-expanded="false" aria-controls="collapsePassword">
-            Change my password
-        </button>
-
-        <div class="collapse" id="collapsePassword">
+        <div class="panel-body" hidden>
             <div class="well">
                 <?php echo form_open('account', array('class' => 'form-contact')); ?>
                 <div class="form-group">
@@ -52,16 +51,15 @@
                 </form>
             </div>
         </div>
+        </div>
     </div>
 
-    <br />
-    <br />
     <div class="row">
         <div class="panel">
             <div class="panel-heading panel-heading-account">
-                <h2 class="panel-title text-center">Historic of my transactions</h2>
+                <h2>Historic of my transactions</h2>
             </div>
-            <div class="panel-body">
+            <div class="panel-body" hidden>
                 <?php if ($transactions != false) { ?>
                     <table class="table table-bordered">
                         <tr>
@@ -102,15 +100,13 @@
             </div>
         </div>
     </div>
-    <br />
-    <br />
 
     <div class="row">
         <div class="panel">
             <div class="panel-heading panel-heading-account">
-                <h2 class="panel-title text-center">Events joined</h2>
+                <h2>Events joined</h2>
             </div>
-            <div class="panel-body">
+            <div class="panel-body" hidden>
                 <?php if ($registrations != false) { ?>
                     <table class="table table-bordered">
                         <tr>
@@ -155,9 +151,9 @@
     <div class="row">
         <div class="panel">
             <div class="panel-heading panel-heading-account">
-                <h2 class="panel-title text-center">Events created</h2>
+                <h2>Events created</h2>
             </div>
-            <div class="panel-body">
+            <div class="panel-body" hidden>
                 <?php if ($authorEvent != false) { ?>
                     <table class="table table-bordered">
                         <tr>

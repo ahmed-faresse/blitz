@@ -1,16 +1,81 @@
-.account {
-    margin-top: 150px;
+@font-face {
+  font-family: 'SoftElegance';
+  src: url('../fonts/Soft Elegance.ttf');
+  font-weight: normal;
+  font-style: normal;
 }
 
-h1{font-family: Pacifico;}
+.headings
+{
+    margin-bottom: 30px;
+}
+
+.account {
+    margin-top: 150px;
+    background-color: #1C1D1F;
+    border-radius: 20px;
+}
+
+.account-head
+{
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1
+{
+    font-family: Pacifico;
+    color: white;
+    margin-top: 0;
+}
+
+h2
+{
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-align: center;
+}
+
+em
+{    
+    color: white;
+    font-size: 9em;
+}
+
+strong
+{
+    color:#45BBFF;
+}
+
+.title
+{
+    color: white;
+    font-family: "SoftElegance";
+     text-align: center;
+}
+
+h2
+{
+    font-family: "SoftElegance";
+    color:#45BBFF;
+}
 
 .btn-login
 {
-    background-color: #6BB9F0;
-    color: #ffffff;
+    background-color: #313336;
+    color:#45BBFF;
+    font-family: "SoftElegance";
     padding-bottom: 10px;
     padding-top: 10px;
     transition: background-color 300ms linear 0s;
+}
+
+.btn-login:hover
+{
+    background-color: #3C3E42;
+    color:#45BBFF;
 }
 
 .btn-save
@@ -24,8 +89,20 @@ h1{font-family: Pacifico;}
 
 .panel-heading-account
 {
-    background-color: #45BBFF;
-    color: #ffffff;
+    background-color: #313336;
+    color:#45BBFF;
+}
+
+table
+{
+    background-color: #FFFFFF;
+
+}
+
+.panel
+{
+    background-color: #F2F2F2;
+    color: #000000;
 }
 
 .panel-body-account
