@@ -43,7 +43,7 @@ class Account extends CI_Controller {
         $data['eventTransactions'] = false;
         $data['registrations'] = false;
         $data['eventRegistrations'] = false;
-
+        $data['authorEvent'] = false;
 
         if($this->session->userdata('logged_in'))
         {
@@ -79,6 +79,7 @@ class Account extends CI_Controller {
                 $data["eventRegistrations"][$i] = $this->event->get_full_event($registration->event_id);
                 $i++;
             }
+            $data['authorEvent'] = $this->event->get_authored_event($session_data['id']);
             $data['registrations'] = $registrations;
             $this->load->helper('assets');
             $this->load->view('templates/header', $header);
@@ -92,6 +93,16 @@ class Account extends CI_Controller {
         $this->session->unset_userdata('logged_in');
         session_destroy();
         redirect('Account', 'refresh');
+    }
+
+    function remove_event($id)
+    {
+        if ($this->session->userdata('logged_in'))
+        {
+            if ($id != null)
+              $this->event->remove_event($id);
+        }
+        redirect('account', 'refresh');
     }
 
     public function remove_player($id)

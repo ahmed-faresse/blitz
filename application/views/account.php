@@ -108,7 +108,7 @@
     <div class="row">
         <div class="panel">
             <div class="panel-heading panel-heading-account">
-                <h2 class="panel-title text-center">My events</h2>
+                <h2 class="panel-title text-center">Events joined</h2>
             </div>
             <div class="panel-body">
                 <?php if ($registrations != false) { ?>
@@ -138,6 +138,53 @@
                                 </td>
                                 <td>
                                     <a href="<?php echo base_url() ?>account/remove_player/<?php echo $eventRegistrations[$i]->id ?>" class="btn btn-danger" role="button"><i class="fa fa-minus-circle"></i> Unregister</a>
+                                </td>
+                            </tr>
+                            <?php
+                            $i++;
+                        } ?>
+                    </table>
+                <?php }
+                else { ?>
+                    <p>You are not register to any event.</p>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="panel">
+            <div class="panel-heading panel-heading-account">
+                <h2 class="panel-title text-center">Events created</h2>
+            </div>
+            <div class="panel-body">
+                <?php if ($authorEvent != false) { ?>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Event name</th>
+                            <th>Event date</th>
+                            <th>Event description</th>
+                            <th>Current people registered</th>
+                            <th></th>
+                        </tr>
+                        <?php
+                        $i = 0;
+                        foreach($authorEvent as $event) { ?>
+                            <tr>
+                                <td>
+                                    <?php echo $event->name ?>
+                                </td>
+                                <td>
+                                    <?php echo $event->date ?>
+                                </td>
+                                <td>
+                                    <?php echo $event->short_description ?>
+                                </td>
+                                <td>
+                                    <?php echo $event->current_people ?>
+                                </td>
+                                <td>
+                                    <a href="<?php echo base_url() ?>account/remove_event/<?php echo $event->id ?>" class="btn btn-danger" role="button"><i class="fa fa-minus-circle"></i> Cancel event</a>
                                 </td>
                             </tr>
                             <?php

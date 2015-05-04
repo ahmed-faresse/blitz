@@ -29,6 +29,24 @@ Class Event extends CI_Model
    return false;
  }
 
+function remove_event($id)
+{
+  $this -> db -> delete('events', array('id' => $id)); 
+}
+
+function get_authored_event($author_id)
+{
+  if ($author_id != null)
+   {
+      $this -> db -> select('*');
+      $this -> db -> from('events');
+      $this -> db -> where("author_id", $author_id); 
+
+      $query = $this -> db -> get();
+      return $query->result();
+   }
+}
+
  function decrement_user($id)
  {
    $event = $this->get_full_event($id);

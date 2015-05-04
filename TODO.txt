@@ -1,8 +1,4 @@
-- Accès authorisé/non authorisé : Ahmed
-- padding create event
-- Account liste event crées et possibilité de les supprimer
 - (you) pour les commentaires
 - commantaire: date format
 - nom createur event + couleur différente
-- scroll div
 - account / contact design
