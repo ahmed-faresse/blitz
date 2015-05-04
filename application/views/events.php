@@ -1,7 +1,8 @@
 <div class="container main">
       <div class="row">
         <div class="col-md-12">
-          <select class="filter-event">
+          <label for="searchfilter" class="sr-only">Search</label>
+          <select id="searchfilter" name="searchfilter" class="filter-event">
             <option value="all">No filter</option>
             <option value="thumbnail_lol.jpg">League of Legends</option>
             <option value="sc2.jpg">Starcraft II</option>

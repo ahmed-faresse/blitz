@@ -84,12 +84,13 @@ class VerifyDonate extends CI_Controller {
             {
                 $this->transaction->donate($_SESSION['logged_in']['id'], $_POST['eventid'], $_POST['amount']);
                 $this->event->fund_event($_POST['eventid'], $_POST['amount']);
+                $data['success'] = true;
             }
         }
         else {
+                    $data['success'] = false;
         }
         $data['eventid'] = $_POST['eventid'];
-
         $data['event'] = $this->event->get_full_event($data['eventid']);
         $this->load->helper('assets');
         $this->load->view('templates/header', $header);

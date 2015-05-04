@@ -43,7 +43,9 @@ em
     color: white;
     font-size: 9em;
 }
-
+.btn-danger em{
+    font-size: 1em;
+}
 strong
 {
     color:#45BBFF;
